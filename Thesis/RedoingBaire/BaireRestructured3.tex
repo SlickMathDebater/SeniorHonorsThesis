@@ -1,0 +1,211 @@
+
+\documentclass{amsart}
+
+
+\newcommand{\tab}{\hspace{4mm}} %Spacing aliases
+\newcommand{\shunt}{\vspace{20mm}}
+
+\newcommand{\sd}{\partial} %Squiggle d
+
+
+\newcommand{\al}{\alpha} %Steal ALL of Dr. Kable's Aliases! MWAHAHAHAHA!
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\Ga}{\Gamma}
+\newcommand{\de}{\delta}
+\newcommand{\De}{\Delta}
+\newcommand{\ep}{\epsilon}
+\newcommand{\vep}{\varepsilon}
+\newcommand{\ze}{\zeta}
+\newcommand{\et}{\eta}
+\newcommand{\tha}{\theta}
+\newcommand{\vtha}{\vartheta}
+\newcommand{\Tha}{\Theta}
+\newcommand{\io}{\iota}
+\newcommand{\ka}{\kappa}
+\newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda}
+\newcommand{\rh}{\rho}
+\newcommand{\si}{\sigma}
+\newcommand{\Si}{\Sigma}
+\newcommand{\ta}{\tau}
+\newcommand{\ups}{\upsilon}
+\newcommand{\Ups}{\Upsilon}
+\newcommand{\ph}{\phi}
+\newcommand{\Ph}{\Phi}
+\newcommand{\vph}{\varphi}
+\newcommand{\vpi}{\varpi}
+\newcommand{\ch}{\chi}
+\newcommand{\ps}{\psi}
+\newcommand{\Ps}{\Psi}
+\newcommand{\om}{\omega}
+\newcommand{\Om}{\Omega}
+
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\scrA}{\mathcal{A}}
+\newcommand{\scrB}{\mathcal{B}}
+\newcommand{\scrC}{\mathcal{C}}
+\newcommand{\scrD}{\mathcal{D}}
+\newcommand{\scrE}{\mathcal{E}}
+\newcommand{\scrF}{\mathcal{F}}
+\newcommand{\scrG}{\mathcal{G}}
+\newcommand{\scrH}{\mathcal{H}}
+\newcommand{\scrI}{\mathcal{I}}
+\newcommand{\scrJ}{\mathcal{J}}
+\newcommand{\scrK}{\mathcal{K}}
+\newcommand{\scrL}{\mathcal{L}}
+\newcommand{\scrM}{\mathcal{M}}
+\newcommand{\scrN}{\mathcal{N}}
+\newcommand{\scrO}{\mathcal{O}}
+\newcommand{\scrP}{\mathcal{P}}
+\newcommand{\scrQ}{\mathcal{Q}}
+\newcommand{\scrR}{\mathcal{R}}
+\newcommand{\scrS}{\mathcal{S}}
+\newcommand{\scrT}{\mathcal{T}}
+\newcommand{\scrU}{\mathcal{U}}
+\newcommand{\scrV}{\mathcal{V}}
+\newcommand{\scrW}{\mathcal{W}}
+\newcommand{\scrX}{\mathcal{X}}
+\newcommand{\scrY}{\mathcal{Y}}
+\newcommand{\scrZ}{\mathcal{Z}}
+
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+
+\usepackage{amsmath}
+\usepackage{slashed}
+\usepackage[mathscr]{euscript}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary} 
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+
+
+
+\begin{document}
+
+\title{The Existence of a Continuous Function Whose Fourier Series Diverges at a Point}
+\author{Raymond Maxwell Jeter}
+
+\maketitle
+
+\begin{abstract}
+There exists a continuous function whose Fourier series diverges at a point.
+\end{abstract}
+
+\section{Notation}
+
+\begin{definition}If $X$ is a metric space, $r$ is a real number with $r>0$, and $x \in X$, then $B(x,r)$ is the $r$-ball centered at $x$.
+
+\end{definition}
+
+\section{Actual Work}
+
+\subsection{Baire's Theorem}
+
+Exposition about how this is the driving force for the entire proof goes here.
+
+In order to facilitate the proof of Baire's Theorem, we prove the following lemma:
+
+\begin{lem}
+If $X$ is a complete metric space, $C_1, C_2 \ldots$ are closed, nonempty subsets of $X$, $C_{n+1} \subset C_n$ for all $n \in \N$ and $diam(C_n) \to 0$, then $\bigcap C_n$ has exactly one point.
+\end{lem}
+
+\begin{proof}
+First we show that $\bigcap C_n$ is nonempty: 
+
+Observe that $\bigcap\limits_{i=0}^n C_i$ is nonempty for all $n \in \N$. 
+So there is a sequence $(x_n)$ such that $x_n \in \bigcap\limits_{i=0}^n C_i$ for all $n \in \N$. 
+The sequence $(x_n)$ is Cauchy because $diam(C_n) \to 0$, so $(x_n) \to x$ for some $x \in X$.
+Now, $x \in \bigcap\limits_{i=0}^n C_i$ for all $n \in \N$.
+So $x \in \bigcap C_n$: $\bigcap C_n \neq \emptyset$.
+
+Next, we show that $\bigcap C_n$ has exactly one point:
+
+Let $x, y \in \bigcap C_n$, with $x \neq y$. 
+Then $d(x,y) = \ep$ for some $\ep >0$. 
+However, $x,y \in C_n$ for all $n \in \N$, so for all $n \in \N$ there is a pair of points $x,y$ such that $d(x,y) = \ep$; 
+so $diam(C_n) \geq \ep$ for all $n \in \N$. 
+So $diam(C_n) \slashed{\to} 0$, contrary to our assumption.
+\end{proof}
+
+\begin{thm}If $X$ is a complete metric space, and $E_1, E_2, \ldots$ are dense, open subsets of $X$, then
+
+\begin{displaymath}
+\bigcap\limits_{n = 1}^{\infty} E_n
+\end{displaymath}
+
+is dense.
+\end{thm}
+
+\begin{proof}
+Let $X$ be a complete metric space and $E_1, E_2, \ldots$ be dense open subsets of $X$. Let $U$ be a nonempty open subset of $X$.
+
+For each $n \in \N$ we have $E_n \cap U$ nonempty and open: there is a point, $x_n \in E_n \cap U$, with a ball, $B(x_n, r_n)$, such that$B(x_n, r_n) \subset E_n \cap U$. 
+So for each $n \in \N$ we can choose $\ep_n$ such that $\ep_n < r_n$ and $(\ep_n) \to 0$. %Is this how we're supposed to do it?
+So we have $\overline{B(x_n,\ep_n)} \subset E_n \cap U$ for each $n \in \N$.
+
+Define $C_1 = \overline{B(x_1,\ep_1)}$ and $C_n = \overline{B(x_1,\ep_1)} \cap \bigcap\limits_{i=1}^n C_i$.
+For all $n \in \N$,  $C_n$ is closed, $C_{n+1} \subset C_n$, $diam(C_n) \to 0$, and $C_n \neq \emptyset$.
+So $\bigcap C_n$ has exactly one point by the above lemma. %I should learn how to reference lemmas
+
+Also, for all $n \in \N$, $C_n \subset E_n \cap U$.
+So $\bigcap C_n \subset \bigcap E_n \cap U$.
+So $\bigcap E_n \cap U$ has at least one point; it is nonempty.
+
+So $\bigcap E_n$ intersects every nonempty open set, $\bigcap E_n$ is dense.
+
+\end{proof}
+
+\begin{thm}
+There exists a continuous function whose fourier series diverges at a point.
+\end{thm}
+
+\begin{proof}
+
+Proof goes here.
+
+\end{proof}
+
+\end{document}

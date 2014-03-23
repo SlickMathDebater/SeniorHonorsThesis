@@ -1,0 +1,235 @@
+
+\documentclass{amsart}
+
+
+\newcommand{\tab}{\hspace{4mm}} %Spacing aliases
+\newcommand{\shunt}{\vspace{20mm}}
+
+\newcommand{\sd}{\partial} %Squiggle d
+
+
+\newcommand{\al}{\alpha} %Steal ALL of Dr. Kable's Aliases! MWAHAHAHAHA!
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\Ga}{\Gamma}
+\newcommand{\de}{\delta}
+\newcommand{\De}{\Delta}
+\newcommand{\ep}{\epsilon}
+\newcommand{\vep}{\varepsilon}
+\newcommand{\ze}{\zeta}
+\newcommand{\et}{\eta}
+\newcommand{\tha}{\theta}
+\newcommand{\vtha}{\vartheta}
+\newcommand{\Tha}{\Theta}
+\newcommand{\io}{\iota}
+\newcommand{\ka}{\kappa}
+\newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda}
+\newcommand{\rh}{\rho}
+\newcommand{\si}{\sigma}
+\newcommand{\Si}{\Sigma}
+\newcommand{\ta}{\tau}
+\newcommand{\ups}{\upsilon}
+\newcommand{\Ups}{\Upsilon}
+\newcommand{\ph}{\phi}
+\newcommand{\Ph}{\Phi}
+\newcommand{\vph}{\varphi}
+\newcommand{\vpi}{\varpi}
+\newcommand{\ch}{\chi}
+\newcommand{\ps}{\psi}
+\newcommand{\Ps}{\Psi}
+\newcommand{\om}{\omega}
+\newcommand{\Om}{\Omega}
+
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\scrA}{\mathcal{A}}
+\newcommand{\scrB}{\mathcal{B}}
+\newcommand{\scrC}{\mathcal{C}}
+\newcommand{\scrD}{\mathcal{D}}
+\newcommand{\scrE}{\mathcal{E}}
+\newcommand{\scrF}{\mathcal{F}}
+\newcommand{\scrG}{\mathcal{G}}
+\newcommand{\scrH}{\mathcal{H}}
+\newcommand{\scrI}{\mathcal{I}}
+\newcommand{\scrJ}{\mathcal{J}}
+\newcommand{\scrK}{\mathcal{K}}
+\newcommand{\scrL}{\mathcal{L}}
+\newcommand{\scrM}{\mathcal{M}}
+\newcommand{\scrN}{\mathcal{N}}
+\newcommand{\scrO}{\mathcal{O}}
+\newcommand{\scrP}{\mathcal{P}}
+\newcommand{\scrQ}{\mathcal{Q}}
+\newcommand{\scrR}{\mathcal{R}}
+\newcommand{\scrS}{\mathcal{S}}
+\newcommand{\scrT}{\mathcal{T}}
+\newcommand{\scrU}{\mathcal{U}}
+\newcommand{\scrV}{\mathcal{V}}
+\newcommand{\scrW}{\mathcal{W}}
+\newcommand{\scrX}{\mathcal{X}}
+\newcommand{\scrY}{\mathcal{Y}}
+\newcommand{\scrZ}{\mathcal{Z}}
+
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+
+\usepackage{amsmath}
+\usepackage{slashed}
+\usepackage[mathscr]{euscript}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary} 
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+
+
+
+\begin{document}
+
+\title{The Existence of a Continuous Function Whose Fourier Series Diverges at a Point}
+
+\maketitle
+
+\begin{abstract}
+This paper reconstructs a proof of the existence of a continuous function whose fourier series diverges at a point.
+\end{abstract}
+
+\section{Notation}
+
+\begin{definition}If $X$ is a metric space, $r$ is a real number with $r>0$, and $x \in X$, then we say that $X_r(x)$ is the $r$-ball centered at $x$.
+
+\end{definition}
+
+\section{Actual Work}
+
+\subsection{Baire's Theorem}
+
+Exposition about how this is the driving force for the entire proof goes here.
+
+\begin{thm} Baire's Theorem: If $X$ is a complete metric space, and $E_1, E_2, \ldots$ are dense, open subsets of $X$, then
+
+\begin{displaymath}
+\bigcap\limits_{n = 1}^{\infty} E_n
+\end{displaymath}
+
+is dense.
+\end{thm}
+
+\begin{proof}
+Let $X$ be a complete metric space and $E_1, E_2, \ldots$ be dense open subsets of $X$.
+
+We proceed by showing that $\bigcap\limits_{n = 1}^{\infty} E_n$ intersects every open set.
+
+Let $U$ be an open set.
+
+Define $B_1 = U$.
+
+$E_1 \cap B_1 \neq \emptyset$, because $E_1$ is dense.
+
+So there is an $x_1 \in E_1 \cap B_1$.
+
+$E_1 \cap B_1$ is open, because $E_1$ and $B_1$ are both open.
+
+So there is an $r_1 >0$ such that $X_{r_1}(x_1) \subset E_1 \cap B_1$.
+
+Define $\ep_1 = $min$(1, r_1)$.
+
+Define $B_2 = X_{\ep_1}(x_1)$, and define $B_2'= X_{r_1}(x_1)$.
+
+$E_2 \cap B_2 \neq \emptyset$, because $E_2$ is dense.
+
+So there is an $x_2 \in E_2 \cap B_2$.
+
+$E_2 \cap B_2$ is open, because $E_2$ and $B_2$ are both open.
+
+So there is an $r_2 >0$ such that $X_{r_2}(x_2) \subset E_2 \cap B_2$.
+
+Define $\ep_2 = $min$(r_2, \frac{r_1}{2})$.
+
+Define a sequence of open sets $(B_n)$ and $(B_n')$, as well as points $(x_n)$ and real numbers $(r_n)$. "similarly". (How do I make this sound right?)
+
+Now, the sequence $(x_n)$ is cauchy, by construction.
+
+So, because $X$ is complete, this means that $(x_n) \to x$ for some $x \in X$.
+
+Observe that $x_n \in B_n$ for all $n \in \N$.
+
+Also observe that $B_{n+1} \subset B_n$ for all $n \in \N$.
+
+So $x_n \in \bigcap\limits_{i =1}^n$ for all $n \in \N$.
+
+This means that $x \in \overline{B_n}$ for all $n \in \N$.
+
+Now, $\overline{B_{n+1}} \subset E_n$ for all $n \in \N$:
+
+\tab $E_n \supset E_n \cap B_n$.
+
+\tab $E_n \cap B_n \supset B_{n+1}'$, by construction.
+
+\tab $B_{n+1}' \supset \overline{B_{n+1}}$, because $B_{n+1}'=X_{r_n}(x_n)$ and $B_{n+1} \subset X_{\frac{r_n}{2}}(x_n)$. (This is not clear but I don't know how to make this clear.) 
+
+This means that $x \in E_n$ for all $n \in \N$.
+
+So $x \in \bigcap\limits_{n = 1}^{\infty} E_n$.
+
+Also, $x \in U$.
+
+So $x \in U \cap \bigcap\limits_{n = 1}^{\infty} E_n$
+
+So $U \cap \bigcap\limits_{n = 1}^{\infty} E_n \neq \emptyset$.
+
+So if $U$ is an open set, then $U \cap \bigcap\limits_{n = 1}^{\infty} E_n \neq \emptyset$.
+
+In other words, $\bigcap\limits_{n = 1}^{\infty} E_n$ is dense.
+\end{proof}
+
+\begin{thm}
+There exists a continuous function whose fourier series diverges at a point.
+\end{thm}
+
+\begin{proof}
+
+Proof goes here.
+
+\end{proof}
+
+\end{document}

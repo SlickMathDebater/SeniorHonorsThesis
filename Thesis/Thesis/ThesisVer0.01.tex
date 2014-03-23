@@ -1,0 +1,481 @@
+%Comments go here.
+%Remember, Max: No multiline comments here. LaTeX land isn't quite as good as it should be.
+%Anyway, let's get on this:
+%Doing numbering like this from now on:
+%0.abc: a: math draft #. b: exposition draft # c: formatting draft number.
+
+%Current status:
+%Barebones:
+%Parts 1-3: Begun, waiting feedback.
+%Parts 4-6: Proofs written. Old Man Approved!
+%Baire's Theorem: Written, awaiting approval.
+%Main part: Written, waiting approval.
+
+%Exposition:
+%Parts 1-3: Not begun
+%Parts 4-6: Not begun
+%Baire's Theorem: Not begun
+%Main part: Not begun
+
+%Formatting:
+%Don't know what to do here.
+
+
+\documentclass{amsart}
+
+
+\newcommand{\tab}{\hspace{4mm}} %Spacing aliases
+\newcommand{\shunt}{\vspace{20mm}}
+
+\newcommand{\sd}{\partial} %Squiggle d
+
+
+\newcommand{\al}{\alpha} %Steal ALL of Dr. Kable's Aliases! MWAHAHAHAHA!
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\Ga}{\Gamma}
+\newcommand{\de}{\delta}
+\newcommand{\De}{\Delta}
+\newcommand{\ep}{\epsilon}
+\newcommand{\vep}{\varepsilon}
+\newcommand{\ze}{\zeta}
+\newcommand{\et}{\eta}
+\newcommand{\tha}{\theta}
+\newcommand{\vtha}{\vartheta}
+\newcommand{\Tha}{\Theta}
+\newcommand{\io}{\iota}
+\newcommand{\ka}{\kappa}
+\newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda}
+\newcommand{\rh}{\rho}
+\newcommand{\si}{\sigma}
+\newcommand{\Si}{\Sigma}
+\newcommand{\ta}{\tau}
+\newcommand{\ups}{\upsilon}
+\newcommand{\Ups}{\Upsilon}
+\newcommand{\ph}{\phi}
+\newcommand{\Ph}{\Phi}
+\newcommand{\vph}{\varphi}
+\newcommand{\vpi}{\varpi}
+\newcommand{\ch}{\chi}
+\newcommand{\ps}{\psi}
+\newcommand{\Ps}{\Psi}
+\newcommand{\om}{\omega}
+\newcommand{\Om}{\Omega}
+
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\HH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\scrA}{\mathcal{A}}
+\newcommand{\scrB}{\mathcal{B}}
+\newcommand{\scrC}{\mathcal{C}}
+\newcommand{\scrD}{\mathcal{D}}
+\newcommand{\scrE}{\mathcal{E}}
+\newcommand{\scrF}{\mathcal{F}}
+\newcommand{\scrG}{\mathcal{G}}
+\newcommand{\scrH}{\mathcal{H}}
+\newcommand{\scrI}{\mathcal{I}}
+\newcommand{\scrJ}{\mathcal{J}}
+\newcommand{\scrK}{\mathcal{K}}
+\newcommand{\scrL}{\mathcal{L}}
+\newcommand{\scrM}{\mathcal{M}}
+\newcommand{\scrN}{\mathcal{N}}
+\newcommand{\scrO}{\mathcal{O}}
+\newcommand{\scrP}{\mathcal{P}}
+\newcommand{\scrQ}{\mathcal{Q}}
+\newcommand{\scrR}{\mathcal{R}}
+\newcommand{\scrS}{\mathcal{S}}
+\newcommand{\scrT}{\mathcal{T}}
+\newcommand{\scrU}{\mathcal{U}}
+\newcommand{\scrV}{\mathcal{V}}
+\newcommand{\scrW}{\mathcal{W}}
+\newcommand{\scrX}{\mathcal{X}}
+\newcommand{\scrY}{\mathcal{Y}}
+\newcommand{\scrZ}{\mathcal{Z}}
+
+\newcommand{\diam}{\text{\rm diam}}
+
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{slashed}
+\usepackage[mathscr]{euscript}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary} 
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+
+
+
+\begin{document}
+
+\title{The Existence of a Continuous Function Whose Fourier Series Diverges at a Point}
+\author{Raymond Maxwell Jeter}
+
+\begin{abstract}
+There exists a continuous function whose Fourier series diverges at a point.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+\textcolor{green}{Note to Dr. Ullrich: I'm colorcoding this thing. Black is text I half-think should go in the final thing. Green are direct statements to you. Red is placeholders.}
+
+\textcolor{green}{Am not fixing 100\% of the formatting things immediately. Would rather work on content right now. Things that I remember I have to do are:\\ 
+the Abs. Val / Norm stuff\\
+Renaming $S_n$ \\
+}
+
+\textcolor{red}{Exposition about how Fourier thought what I did, and how Dini's test shows that he was really close.}
+
+\section{Notation}
+
+\begin{definition}
+If $X$ is a metric space, $r$ is a real number with $r>0$, and $x \in X$, then $B(x,r)$ is the $r$-ball centered at $x$.
+\end{definition}
+
+\begin{definition}
+If $f$ is a continuous function, $n \in \N$, and $x \in \R$, then $S_n(f,x) = \sum\limits_{j=-n}^n c_n e^{-ijx}$, where $c_n = \int\limits_0^{2\pi} f(x)e^{ijt} dx$. We call this $f$'s $n$th partial Fourier series.
+\end{definition}
+
+\begin{definition}
+For each $n \in \N$, we define $D_n: T \to \R$ by
+
+
+\begin{displaymath}
+   D_n(x) = \left\{
+     \begin{array}{lr}
+       1 & : n=0\\
+       1+ 2\sum\limits_{j=0}^n \cos(j x) & : n > 0
+     \end{array}
+   \right.
+\end{displaymath} 
+\end{definition}
+
+\textcolor{red}{We freely use the following well-known theorems:}
+
+\begin{thm}
+\begin{displaymath}
+   D_n(x) = \left\{
+     \begin{array}{lr}
+       \frac{\sin((n+\frac{1}{2})x)}{\sin(\frac{x}{2})} & : x \neq 0 \\
+       1+2n & : x=0
+     \end{array}
+   \right.
+\end{displaymath}
+\end{thm}
+
+\begin{thm}
+For any $f \in C(T)$, $(D_n \ast f)(x) = S_n(f,x)$. 
+\end{thm}
+
+\section{Actual Work}
+
+\subsection{Groundwork}
+
+\textcolor{red}{Exposition about how the groundwork is necessary.}
+
+Consider the following sequence:
+
+\begin{displaymath}
+c_n = \frac{1}{2 \pi} \int\limits_0^{2\pi} |D_n(x)| dx
+\end{displaymath}
+
+\begin{thm}
+$c_n \to \infty$
+\end{thm}
+
+\begin{proof}
+
+First: $|D_n(x)| \geq \frac{\frac{1}{2}}{\sin(\frac{x}{2})}$ if $x \in [\frac{\pi k}{6},\frac{5 \pi k}{6}]$ for some $k \in \N$.
+
+This naturally yields the inequality $\int\limits_0^{2\pi} |D_n(x)| dx \leq \sum\limits_{j=1}^n \frac{2 \pi}{6n \sin(\frac{5\pi j}{6(n+\frac{1}{2})})}$. 
+
+\textcolor{red}{*An illustration goes here*.}
+
+Also, recall that for all $x \in T$, $x > \sin(x)$. 
+So, $\frac{1}{x} < \frac{1}{\sin(x)}$ for all $x \in T$.
+
+This means that we have
+
+\begin{align*}
+c_n &\geq \frac{1}{2 \pi} \sum\limits_{j=1}^n \frac{2 \pi}{6n \sin(\frac{5\pi j}{6(n+\frac{1}{2})})}\\
+&= \frac{1}{6} \sum\limits_{j=1}^n \frac{1}{n \sin(\frac{5\pi j}{6(n+\frac{1}{2})})}\\
+&\geq \frac{1}{6} \sum\limits_{j=1}^n \frac{1}{6n \frac{5\pi j}{6(n+\frac{1}{2})}}\\
+&= \frac{1}{6} \sum\limits_{j=1}^n \frac{\frac{n+\frac{1}{2}}{n}}{5\pi j}\\
+&\geq \frac{1}{6} \sum\limits_{j=1}^n \frac{1}{5\pi j}
+\end{align*}
+
+So $c_n \geq \frac{1}{30 \pi} \sum\limits_{j=1}^n \frac{1}{ j}$, and $\sum\limits_{j=1}^n \frac{1}{j} \to \infty$. So $c_n \to \infty$.
+
+\end{proof}
+
+\begin{definition}
+If $f \in C(T)$ , then $Mf = \sup\{S_m(f,0) : m \in \N\}$ 
+\end{definition}
+
+\begin{thm}
+For every real number, $A$, there is an $f \in C(T)$ such that $||f|| = 1$ and $Mf > A$. 
+\end{thm}
+
+\begin{proof}
+For each $n \in \N$, define $g_n: T \to \R$ such that 
+
+\begin{displaymath}
+   g_n(x) = \left\{
+     \begin{array}{lr}
+       1 & : x \in [\frac{1}{6 \pi k}, \frac{5}{6 \pi k}] $ for some even $ k.\\
+       -1 & : x \in [\frac{1}{6 \pi k}, \frac{5}{6 \pi k}]$ for some odd $ k. \\
+       \textcolor{red}{horrifyingequation} & : $ else $
+     \end{array}
+   \right.
+\end{displaymath}
+
+\textcolor{green}{Should I do this, or should I just wave my hands at it? I'm inclined towards this, because I can make an illustration and be more precise. But it seems like it might be childish/shitty writing/something.}
+
+\textcolor{red}{*An illustration goes here*.}
+
+Note that $g_n$ is positive if and only if $D_n$ is positive and negative if and only if $D_n$ is negative. So, if $x \in [\frac{1}{6 \pi k}, \frac{5}{6 \pi k}] $ for some $ k \in \N$, then $g_nD_n(x) = |D_n(x)|$. Also, $g_nD_n(x) \geq 0$ for all $x \in T$.
+
+So, similar to the above,
+
+\begin{align*}
+g_n \ast D_n(0) &\geq \frac{1}{2 \pi} \sum\limits_{j=1}^n \frac{2 \pi}{6n \sin(\frac{5\pi j}{6(n+\frac{1}{2})})}\\
+&= \frac{1}{6} \sum\limits_{j=1}^n \frac{1}{n \sin(\frac{5\pi j}{6(n+\frac{1}{2})})}\\
+&\geq \frac{1}{6} \sum\limits_{j=1}^n \frac{1}{6n \frac{5\pi j}{6(n+\frac{1}{2})}}\\
+&= \frac{1}{6} \sum\limits_{j=1}^n \frac{\frac{n+\frac{1}{2}}{n}}{5\pi j}\\
+&\geq \frac{1}{6} \sum\limits_{j=1}^n \frac{1}{5\pi j}
+\end{align*}
+
+So $g_n \ast D_n(0) \to \infty$. In other words, for each $A$ there is an $n \in \N$ such that $Mg_n > A$, which gives us what we wanted.
+
+\end{proof}
+
+\begin{thm}
+For every $\ep >0$ and every real number, $A$, there is an $f \in C(T)$ such that $||f|| = \vep $ and $Mf > A$. 
+
+\end{thm}
+
+\begin{proof}
+There is an $f \in C(T)$ such that $||f|| = 1$ and $Mf > \frac{A}{\vep}$.
+
+Observe that $\vep f$ has $||\vep f|| = \vep$ and $M\vep f > A$.
+
+\textcolor{green}{How should I make M (blah) not look bad? Should I do parenthesis stuff, or just leave off the parenthesis and hope the reader gets it?}
+\end{proof}
+
+\subsection{Buildup to Applying Baire's Theorem}
+
+\textcolor{red}{Exposition about how we use the groundwork to get something we can apply Baire's Theorem to.}
+
+So, we want to consider the following sets:
+
+\begin{displaymath}
+E_n = \{f \in C(T) : Mf > n\}
+\end{displaymath}
+
+\begin{thm}
+For all $n \in \N$, $E_n$ is dense.
+\end{thm}
+
+\begin{proof}
+
+We show that given $\vep>0$ and $f \in C(T)$, $B(f,\vep) \cap E_n$ is nonempty. 
+
+If $Mf > n$, then $f \in E_n$ and $f \in B(f, \vep)$, so $B(f, \vep) \cap E_n$ is nonempty.
+
+Next, if $Mf \leq n$, there is a $g$ such that $Mg > 2n$ and $||g|| < \vep$. 
+Now, $M(f+g) \geq n$, so $f+g \in E_n$. 
+Also, $||f+g -f|| < \vep$, so that $f+g \in B(f, \vep)$. 
+So $B(f, \vep) \cap E_n$ is nonempty.
+
+\end{proof}
+
+\begin{thm}
+For all $n \in \N$, $E_n$ is open.
+\end{thm}
+
+\begin{proof}
+Consider $S_n: C(T) \to \R$ given by
+
+\begin{displaymath}
+S_n(f) = S_n(f,0)
+\end{displaymath}
+
+We proceed by showing that $S_n$ is continuous. 
+We do this by showing that $S_n$ is Lipschitz.
+
+\textcolor{green}{Should I explain why the result follows from $S_n$'s continuity? Also, what should I call $S_n$ instead? I'm inclined towards $R_n$ because I am lazy with creativity, but that still looks pretty bad.}
+
+Let $f, g \in C(T)$. Then we have:
+
+\begin{align*}
+|S_n(f) - S_n(g)| &= |f \ast D_n(0) - g \ast D_n(0)| \\
+&= |(f-g) \ast D_n(0)| \\
+&= |\int\limits_0^{2\pi} (f(t)-g(t))D_n(t)dt| \\
+&\leq \int\limits_0^{2\pi} |(f(t)-g(t))D_n(t)|dt \\
+&= \int\limits_0^{2\pi} |(f(t)-g(t))||D_n(t)|dt \\
+&\leq \int\limits_0^{2\pi} ||f-g|||D_n(t)|dt \\
+&= ||f-g|| \int\limits_0^{2\pi} |D_n(t)|dt
+\end{align*}
+
+Because $\int\limits_0^{2\pi} |D_n(t)|dt$ is constant given $n$, this means that for any $f,g \in C(T)$, $|S_n(f) - S_n(g)| \leq c_n ||f-g||$ for some constant $c_n$; $S_n$ is Lipschitz.
+
+\end{proof}
+
+\begin{thm}
+$C(T)$ is a complete metric space.
+\end{thm}
+
+\begin{proof}
+We want to show that any Cauchy sequence of continuous functions, $(f_n)$, converges to a continuous function.
+
+$\R$ is complete: so for each $x \in T$, $(f_n(x))$ converges to a point. We define $f: T \to \R$ by $f(x) = \lim\limits_{n \to \infty} f_n(x)$.
+
+Now: let $\vep >0$. Choose $N$ such that for all $n,m \geq N$, $||f_n-f_m|| < \frac{\vep}{2}$. 
+Then for all $x \in T$ and $n,m \geq N$, , we have $|f_n(x) - f_m(x)| < \frac{\vep}{2}$.
+By taking a limit as $m \to \infty$, we have for all $x \in T$ and $n \geq N$, $|f_n(x) - f(x)| \leq \frac{\vep}{2}$.
+
+So $||f_n - f|| \leq \frac{\vep}{2} < \vep$ for all $n \geq N$; in other words, $f_n \to f$.
+
+Also, $f$ is continuous because $f_n$ is a sequence of continuous functions that converges to $f$ uniformly.
+
+\end{proof}
+
+By the above three theorems, we have that $E_1, E_2 \ldots$ is a collection of open, dense sets in a complete metric space. 
+
+\subsection{Baire's Theorem}
+
+\textcolor{red}{Exposition about how this is the driving force for the entire proof goes here.}
+
+In order to facilitate the proof of Baire's Theorem, we prove the following lemma:
+
+\begin{lem}
+If $X$ is a complete metric space, $C_1, C_2 \ldots$ are closed, nonempty subsets of $X$, $C_{n+1} \subset C_n$ for all $n \in \N$ and $\diam(C_n) \to 0$, then $\bigcap C_n$ has exactly one point.
+\end{lem}
+
+\begin{proof}
+First we show that $\bigcap C_n$ is nonempty: 
+
+Observe that $\bigcap\limits_{i=0}^n C_i$ is nonempty for all $n \in \N$. 
+So there is a sequence $(x_n)$ such that $x_n \in \bigcap\limits_{i=0}^n C_i$ for all $n \in \N$. 
+The sequence $(x_n)$ is Cauchy because $\diam(C_n) \to 0$, so $(x_n) \to x$ for some $x \in X$.
+Now, $x \in \bigcap\limits_{i=0}^n C_i$ for all $n \in \N$.
+So $x \in \bigcap C_n$: $\bigcap C_n \neq \emptyset$.
+
+Next, we show that $\bigcap C_n$ has exactly one point:
+
+Let $x, y \in \bigcap C_n$, with $x \neq y$. 
+Then $d(x,y) = \vep$ for some $\vep >0$. 
+However, $x,y \in C_n$ for all $n \in \N$,
+so $\diam(C_n) \geq \vep$ for all $n \in \N$. 
+So $\diam(C_n) \slashed{\to} 0$, contrary to our assumption.
+\end{proof}
+
+\begin{thm}If $X$ is a complete metric space, and $E_1, E_2, \ldots$ are dense, open subsets of $X$, then
+
+\begin{displaymath}
+\bigcap\limits_{n = 1}^{\infty} E_n
+\end{displaymath}
+
+is dense.
+\end{thm}
+
+\begin{proof}
+We need to show that in a complete metric space, $X$, that given a collection of dense open sets, $E_1, E_2 \ldots$, and a nonempty open set $U$, that $\bigcap E_n \cap U$ is nonempty.
+
+First, $E_1 \cap U$ is nonempty and open.
+So there is a ball, $B(x_1,r_1) \subset E_1 \cap U$.
+By taking $\vep_1 = \min(\frac{r_1}{2},1)$, we have $\overline{B(x_1,\vep_1)} \subset E_1 \cap U$.
+Define $C_1 = \overline{B(x_1,\vep_1)}$.
+Observe that $C_1$ is closed and nonempty. Also, $C_1 \subset U$.
+
+Next, $E_2 \cap B(x_1,\vep_1)$ is nonempty and open.
+So there is a ball, $B(x_2,r_2) \subset E_2 \cap B(x_1,\vep_1)$.
+By taking $\vep_2 = \min(\frac{r_2}{2},\frac{1}{2})$, we have $\overline{B(x_2,\vep_2)} \subset E_2 \cap B(x_1,\vep_1)$.
+Define $C_2 = \overline{B(x_2,\vep_2)}$.
+Observe that $C_1$ is closed and nonempty. Also, $C_2 \subset C_1$.
+
+We can continue this:
+
+Note that $E_n \cap B(x_{n-1},\vep_{n-1})$ is nonempty and open.
+So there is a ball, $B(x_n,r_n) \subset E_n \cap B(x_{n-1},\vep_{n-1})$.
+By taking $\vep_n = \min(\frac{r_n}{2},\frac{1}{n})$, we have $\overline{B(x_n,\vep_n)} \subset E_n \cap B(x_{n-1},\vep_{n-1})$.
+Define $C_n = \overline{B(x_n,\vep_n)}$.
+Observe that $C_n$ is closed and nonempty. Also, $C_n \subset C_{n-1}$.
+
+So we have a collection of closed, nonempty, nested sets: $\bigcap\limits_{n=1}^\infty C_n$ has exactly one point.
+This point is also in $U$, because $C_1 \subset U$.
+This point is also in $E_n$ for all $n \in \N$, because $C_n \subset E_n$ for all $n \in \N$.
+So $\bigcap\limits_{n=1}^\infty E_n \cap U$ isn't empty.
+
+\end{proof}
+
+\section{The awesome part}
+
+\begin{thm}
+There exists a continuous function whose fourier series diverges at a point.
+\end{thm}
+
+\begin{proof}
+
+Recall that 
+
+\begin{displaymath}
+E_n = \{f \in C(T) : Mf > n\}
+\end{displaymath}
+
+is a collection of open, dense subsets of a complete space, $C(T)$. 
+So Baire's Theorem applies: $\bigcap\limits_{n=1}^\infty E_n $ is dense, and so nonempty.
+
+In other words, there's a function, $f$, such that $Mf >n$ for all $n \in \N$. 
+So $Mf$ diverges; $f$'s Fourier series diverges at $0$. 
+
+\end{proof}
+
+\section{Closing Remarks}
+
+\textcolor{red}{Exposition about why the above is interesting. An explicit example.}
+
+\end{document}

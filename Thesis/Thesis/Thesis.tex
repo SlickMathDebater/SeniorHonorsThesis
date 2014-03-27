@@ -163,7 +163,7 @@
 
 \begin{abstract}
 There exists a continuous function whose Fourier series diverges at a point. 
-\colorcomment{red}{In fact, the set of continuous functions whose Fourier series diverges at $0$ is dense in $C([0,2 \pi])$.}
+In fact, the set of continuous functions whose Fourier series diverges at $0$ is dense in $C([0,2 \pi])$.
 \end{abstract}
 
 \maketitle
@@ -174,8 +174,6 @@ There exists a continuous function whose Fourier series diverges at a point.
 
 \colorcomment{Thistle}{Speaking of references, what should I do with respect to citations?}
 
-\colorcomment{Thistle}{I also need you to explain what a ``Modulus of Continuity'' is. The version of Dini's test we were given in class totally skipped over that explanation and just gave us the theorem I state below.}
-
 \section{Introduction}
 
 %Exposition here goes like this:
@@ -185,15 +183,16 @@ There exists a continuous function whose Fourier series diverges at a point.
 %Explain how missing this gap makes sense given the tools Fourier had.
 %It look like it do but it don't.
 
-\colorcomment{RoyalBlue}{In \colorcomment{red}{paper} Fourier said \colorcomment{red}{quote} 
+\colorcomment{RoyalBlue}{In The Analytical Theory of Heat \colorcomment{red}{citationstuff} Fourier said \colorcomment{red}{quote} 
 Now, observe Dini's Test;}
 
 \begin{thm}
-\colorcomment{red}{If $f \in L^1[0, 2\pi]$, $x_0 \in f^{-1}(\R)$, and $F(x) = \frac{f(x+x_0) - f(x_0)}{x}$ is integrable over some open neighborhood of $x_0$, then $f$'s Fourier series converges at $x_0$.}
+\colorcomment{red}{If $f \in L^1[0, 2\pi]$, $x_0 \in f^{-1}(\R)$, and $F(x) = \frac{f(x+x_0) - f(x_0)}{x}$ is Riemann-integrable over some open neighborhood of $x_0$, then the Fourier series of $f$ converges at $x_0$.}
 \end{thm}
 
-\colorcomment{RoyalBlue}{The condition required to apply Dini's test is ``Just a little better than continuity''; \colorcomment{red}{reasons}.
-\colorcomment{red}{Some stuff.}}
+\colorcomment{RoyalBlue}{The condition required to apply Dini's test is ``Just a little better than continuity''; if $f$ is continuous, then the term $f(x+x_0) - f(x_0)$ approaches $0$ as $x$ approaches $0$.
+So, the condition for applying Dini's test is that $f(x+x_0) - f(x_0)$ approaches $0$ at least as fast as a linear function does.
+It is tempting to hope that one could extend this theorem a little more to get the result that Fourier believed in.}
 
 \colorcomment{RoyalBlue}{However, as this paper will demonstrate, this is not true.}
 
@@ -222,13 +221,9 @@ For each $n \in \N$, we define $D_n: T \to \R$ by
 
 
 \begin{displaymath}
-   D_n(x) = \left\{
-     \begin{array}{lr}
-       1, &(n=0),\\
-       \sum\limits_{j=0}^n e^{ijx}, &(n > 0).
-     \end{array}
-   \right.
+   D_n(x) = \sum\limits_{j=-n}^n e^{ijx}
 \end{displaymath} 
+
 \end{definition}
 
 Also, we freely use the following well-known theorems:
@@ -249,8 +244,6 @@ For any $f \in C(T)$, $(D_n \ast f)(x) = S_n(f,x)$.
 \end{thm}
 
 \section{Continuous Functions With Some Partial Sum of its Fourier Series Larger Than A Given Real Number}
-
-\colorcomment{Thistle}{I know you said that we don't need an outline of the proof first, but I think it's a good idea. Why do you think it's not a good idea?}
 
 \colorcomment{RoyalBlue}{A rough sketch of the proof follows. 
 First, for each $A \in \R$ we build a bounded, continuous function with some partial sum of its Fourier series larger than $A$ at $0$. 
@@ -342,7 +335,6 @@ There is an $f \in C(T)$ such that $\norm{f} = 1$ and $Mf > \frac{A}{\vep}$.
 
 Observe that $\vep f$ has $\norm{\vep f} = \vep$ and $M(\vep f) > A$.
 
-\colorcomment{Thistle}{How should I make M (blah) not look bad? Should I do parenthesis stuff, or just leave off the parenthesis and hope the reader gets it?}
 \end{proof}
 
 \subsection{Building Open, Dense Sets of Continuous Functions With Some Partial Sum of its Fourier Series Larger Than A Given Real Number}
@@ -378,7 +370,7 @@ For all $n \in \N$, $E_n$ is open.
 Consider $\la_n: C(T) \to \R$ given by
 
 \begin{displaymath}
-\la_n(f) = S_n(f,0)
+\la_n(f) = \absval{S_n(f,0)}
 \end{displaymath}
 
 Now, consider the following:
@@ -395,7 +387,8 @@ We do this by showing that $\la_n$ is Lipschitz.
 Let $f, g \in C(T)$. Then we have:
 
 \begin{align*}
-\absval{\la_n(f) - \la_n(g)} &= \absval{f \ast D_n(0) - g \ast D_n(0)} \\
+\absval{\la_n(f) - \la_n(g)} &= \absval{\absval{f \ast D_n(0)} - \absval{g \ast D_n(0)}} \\
+&\leq \absval{f \ast D_n(0) - g \ast D_n(0)} \\
 &= \absval{(f-g) \ast D_n(0)} \\
 &= \absval{\int\limits_0^{2\pi} (f(t)-g(t))D_n(t)dt} \\
 &\leq \int\limits_0^{2\pi} \absval{(f(t)-g(t))D_n(t)}dt \\
@@ -460,16 +453,14 @@ So $\diam(C_n) \slashed{\to} 0$, contrary to our assumption.
 \end{proof}
 
 \begin{thm}If $X$ is a complete metric space, and $E_1, E_2, \ldots$ are dense, open subsets of $X$, then
-
 \begin{displaymath}
 \bigcap\limits_{n = 1}^{\infty} E_n
 \end{displaymath}
-
 is dense.
 \end{thm}
 
 \begin{proof}
-We need to show that in a complete metric space, $X$, that given a collection of dense open sets, $E_1, E_2 \ldots$, and a nonempty open set $U$, that $\bigcap E_n \cap U$ is nonempty.
+We need to show that given a nonempty open set $U$, that $\bigcap E_n \cap U$ is nonempty.
 
 First, $E_1 \cap U$ is nonempty and open.
 So there is a ball, $B(x_1,r_1) \subset E_1 \cap U$.
@@ -477,13 +468,15 @@ By taking $\vep_1 = \min(\frac{r_1}{2},1)$, we have $\overline{B(x_1,\vep_1)} \s
 Define $C_1 = \overline{B(x_1,\vep_1)}$.
 Observe that $C_1$ is closed and nonempty. Also, $C_1 \subset U$.
 
-Now, assume that for all $N \in \N$ such that $N < n$, we have constructed $C_{N}$, $x_{N}$, and $\vep_{N}$ such that $C_{N} = \overline{B(x_{N},\vep_{N})}$, $C_{N} \subset C_{N-1}$ (if $N >1$), $C_{N} \subset E_{N}$, and $\vep_{N} < \frac{1}{N}$.
+Now, assume that for all $n \in \N$ such that $n < N$, we have constructed $C_{n}$, $x_{n}$, and $\vep_{n}$ such that $C_{n} = \overline{B(x_{n},\vep_{n})}$, $C_n \subset C_{n-1}$ (if $n >1$), $C_{n} \subset E_{n}$, and $\vep_{n} < \frac{1}{n}$.
 
-Note that $E_n \cap B(x_{n-1},\vep_{n-1})$ is nonempty and open.
-So there is a ball, $B(x_n,r_n) \subset E_n \cap B(x_{n-1},\vep_{n-1})$.
-By taking $\vep_n = \min(\frac{r_n}{2},\frac{1}{n})$, we have $\overline{B(x_n,\vep_n)} \subset E_n \cap B(x_{n-1},\vep_{n-1})$.
-Define $C_n = \overline{B(x_n,\vep_n)}$.
-Observe that $C_n$ is closed and nonempty. Also, $C_n \subset C_{n-1}$.
+\colorcomment{Thistle}{I'm not 100\% sure about the above line. I think I hit everything, but I could easily have missed something.}
+
+Note that $E_N \cap B(x_{N-1},\vep_{N-1})$ is nonempty and open.
+So there is a ball, $B(x_N,r_N) \subset E_N \cap B(x_{N-1},\vep_{N-1})$.
+By taking $\vep_N = \min(\frac{r_N}{2},\frac{1}{N})$, we have $\overline{B(x_N,\vep_N)} \subset E_N \cap B(x_{N-1},\vep_{N-1})$.
+Define $C_N = \overline{B(x_N,\vep_N)}$.
+Observe that $C_N$ is closed and nonempty. Also, $C_N \subset C_{N-1}$.
 
 So we have a collection of closed, nonempty, nested sets.
 Also, note that because $\vep_n \to 0$, we have that $\diam(C_n) \to 0$. 
@@ -511,11 +504,11 @@ E_n = \{f \in C(T) : Mf > n\}
 
 is a collection of open, dense subsets of a complete space, $C(T)$. 
 So Baire's Theorem applies: $\bigcap\limits_{n=1}^\infty E_n $ is dense.
-The above set is precisely the set of functions, $f \in C(T)$, such that $Mf >n$ for all $n \in \N$.
-In other words, this is a subset of the set of functions whose Fourier series diverges at $0$.
+The above set is the set of functions, $f \in C(T)$, such that $Mf >n$ for all $n \in \N$.
+This is a subset of the set of functions whose Fourier series diverges at $0$.
 So the set of functions whose Fourier series diverges at $0$ contains a dense subset, it is dense.
 
-Dense subsets of $C(T)$ are nonempty, so in fact there is a continuous function whose Fourier series diverges at a point.
+Dense subsets of $C(T)$ are nonempty, so there is a continuous function whose Fourier series diverges at a point.
 
 \end{proof}
 

@@ -168,11 +168,11 @@ In fact, the set of continuous functions whose Fourier series diverges at $0$ is
 
 \maketitle
 
-\colorcomment{Thistle}{Note to Dr. Ullrich: I'm colorcoding this thing. Black is text I half-think should go in the final thing. Pink-Purple are direct statements to you. Red is placeholders. Blue is exposition, which I'll need lots of help with.}
+\colorcomment{Violet}{Note to Dr. Ullrich: I'm colorcoding this thing. Black is text I half-think should go in the final thing. Purple are direct statements to you. Red is placeholders. Blue is exposition, which I'll need lots of help with.}
 
-\colorcomment{Thistle}{I need to make sure that I'm not wrong about the history here. Do we have a book I can reference or something?}
+\colorcomment{Violet}{I need to make sure that I'm not wrong about the history here. Do we have a book I can reference or something?}
 
-\colorcomment{Thistle}{Speaking of references, what should I do with respect to citations?}
+\colorcomment{Violet}{Speaking of references, what should I do with respect to citations?}
 
 \section{Introduction}
 
@@ -183,15 +183,15 @@ In fact, the set of continuous functions whose Fourier series diverges at $0$ is
 %Explain how missing this gap makes sense given the tools Fourier had.
 %It look like it do but it don't.
 
-\colorcomment{RoyalBlue}{In The Analytical Theory of Heat \colorcomment{red}{citationstuff} Fourier said \colorcomment{red}{quote} 
-Now, observe Dini's Test;}
+\colorcomment{RoyalBlue}{In The Analytical Theory of Heat \colorcomment{red}{citationstuff} Fourier claimed that any periodic function, continuous or not, can be expressed as a Fourier Series. 
+Now, observe Dini's Test:}
 
 \begin{thm}
-\colorcomment{red}{If $f \in L^1[0, 2\pi]$, $x_0 \in f^{-1}(\R)$, and $F(x) = \frac{f(x+x_0) - f(x_0)}{x}$ is Riemann-integrable over some open neighborhood of $x_0$, then the Fourier series of $f$ converges at $x_0$.}
+\colorcomment{red}{If $f \in L^1[0, 2\pi]$, $x_0 \in f^{-1}(\R)$, and $F(x) = \frac{f(x+x_0) - f(x_0)}{x}$ is Lebesgue-integrable over some open neighborhood of $x_0$, then the Fourier series of $f$ converges at $x_0$.}
 \end{thm}
 
 \colorcomment{RoyalBlue}{The condition required to apply Dini's test is ``Just a little better than continuity''; if $f$ is continuous, then the term $f(x+x_0) - f(x_0)$ approaches $0$ as $x$ approaches $0$.
-So, the condition for applying Dini's test is that $f(x+x_0) - f(x_0)$ approaches $0$ at least as fast as a linear function does.
+The condition for applying Dini's test is that $f(x+x_0) - f(x_0)$ approaches $0$ \colorcomment{red}{``quickly enough''}.
 It is tempting to hope that one could extend this theorem a little more to get the result that Fourier believed in.}
 
 \colorcomment{RoyalBlue}{However, as this paper will demonstrate, this is not true.}
@@ -209,11 +209,11 @@ $T = [0, 2 \pi]$
 \end{definition}
 
 \begin{definition}
-If $f$ is a continuous function, $n \in \N$, and $x \in \R$, then $S_n(f,x) = \sum\limits_{j=-n}^n c_n e^{-ijx}$, where $c_n = \frac{1}{2 \pi} \int\limits_0^{2\pi} f(x)e^{ijt} dx$. We call this the $n$-th partial sum of the Fourier series of $f$.
+If $f$ is a continuous function, $n \in \N$, and $x \in \R$, then $S_n(f,x) = \sum\limits_{j=-n}^n c_n e^{ijx}$, where $c_n = \frac{1}{2 \pi} \int\limits_0^{2\pi} f(t)e^{-ijt} dt$. We call this the $n$-th partial sum of the Fourier series of $f$.
 \end{definition}
 
 \begin{definition}
-If $f$ is a continuous function, then $\norm{f} = \sup\limits_{t \in T} \{\absval{f(t)}\}$
+If $f$ is a bounded function, then $\norm{f} = \sup\limits_{t \in T} \{\absval{f(t)}\}$
 \end{definition}
 
 \begin{definition}
@@ -241,6 +241,10 @@ Also, we freely use the following well-known theorems:
 
 \begin{thm}
 For any $f \in C(T)$, $(D_n \ast f)(x) = S_n(f,x)$. 
+\end{thm}
+
+\begin{thm}
+For any $f \in C(T)$, $f$ is bounded.
 \end{thm}
 
 \section{Continuous Functions With Some Partial Sum of its Fourier Series Larger Than A Given Real Number}
@@ -291,15 +295,18 @@ So $c_n \geq \frac{1}{30 \pi} \sum\limits_{j=1}^n \frac{1}{ j}$, and $\sum\limit
 
 \end{proof}
 
-\colorcomment{RoyalBlue}{It is important to determine how large a function's partial sum of its Fourier series can get at $0$. 
+\colorcomment{RoyalBlue}{It is important to determine how large the partial sum of a function's Fourier series can get at $0$. 
 So we make the following definition:}
 
 \begin{definition}
 If $f \in C(T)$ , then $Mf = \sup\{\absval{S_m(f,0)} : m \in \N\}$ 
 \end{definition}
 
-\colorcomment{RoyalBlue}{So, we want to build a bounded function with $Mf >A$ for some $A \in \R$.
-Constructing a sequence of functions, $g_n$, such that $Mg_n \to \infty$ would suffice.
+%Work on the below.
+
+\colorcomment{RoyalBlue}{Ultimately, we want to build a function with $Mf = \infty$.
+So, we should try to build a sequence of uniformly bounded functions, $f_n$, such that $Mf_n \to \infty$; 
+if we can do that, then we should be able to build the function we want.
 We build this sequence rather naturally out of the proof of the above theorem.}
 
 \begin{thm}
@@ -309,7 +316,7 @@ For every real number, $A$, there is an $f \in C(T)$ such that $\norm{f} = 1$ an
 \begin{proof}
 For each $n \in \N$, choose $g_n: T \to \R$ with $\norm{g_n} = 1$, with $g_nD_n(t) \geq 0$ for all $t \in T$,  $g_n(t) = 1$ if $t \in [\frac{\pi k}{6},\frac{5 \pi k}{6}]$ for some odd $k \in \N$  and $g_n(t) = -1$ if $t \in [\frac{\pi k}{6},\frac{5 \pi k}{6}]$ for some even $k \in \N$.
 
-\colorcomment{Thistle}{An illustration goes here, maybe? If I decide to make pretty pretty pictures it might be worth it.}
+\colorcomment{red}{*Illustration goes here.*}
 
 So, similar to the above,
 
@@ -333,7 +340,7 @@ For every $\ep >0$ and every real number, $A$, there is an $f \in C(T)$ such tha
 \begin{proof}
 There is an $f \in C(T)$ such that $\norm{f} = 1$ and $Mf > \frac{A}{\vep}$.
 
-Observe that $\vep f$ has $\norm{\vep f} = \vep$ and $M(\vep f) > A$.
+Observe that $\norm{\vep f} = \vep$ and $M(\vep f) > A$.
 
 \end{proof}
 
@@ -376,9 +383,9 @@ Consider $\la_n: C(T) \to \R$ given by
 Now, consider the following:
 
 \begin{align*}
-E_N &= \{f \in C(T): Mf> N\} \\
-&= \bigcup\limits_{n \in \N} \{f \in C(T) : \la_n > N\}\\
-&= \bigcup\limits_{n \in \N} \la^{-1}((N, \infty))
+E_n &= \{f \in C(T): Mf> n\} \\
+&= \bigcup\limits_{N \in \N} \{f \in C(T) : \la_N > n\}\\
+&= \bigcup\limits_{N \in \N} \la_N^{-1}((n, \infty))
 \end{align*}
 
 It is sufficient to show that $\la_n$ is continuous for all $n \in \N$; if so, then the right hand side of the above equation is open.
@@ -397,7 +404,7 @@ Let $f, g \in C(T)$. Then we have:
 &= \norm{f-g} \int\limits_0^{2\pi} \absval{D_n(t)}dt
 \end{align*}
 
-Because $\int\limits_0^{2\pi} \absval{D_n(t)}dt$ is constant given $n$, this means that for any $f,g \in C(T)$, $\absval{\la_n(f) - \la_n(g)} \leq c_n \norm{f-g}$ for some constant $c_n$; $\la_n$ is Lipschitz.
+This means that for any $f,g \in C(T)$, $\absval{\la_n(f) - \la_n(g)} \leq c_n \norm{f-g}$ for some constant $c_n$; $\la_n$ is Lipschitz.
 
 \end{proof}
 
@@ -405,18 +412,27 @@ Because $\int\limits_0^{2\pi} \absval{D_n(t)}dt$ is constant given $n$, this mea
 $C(T)$ is a complete metric space.
 \end{thm}
 
+\colorcomment{Violet}{I did a major rewrite of this. Please look over it, as well as the relevant definitions.}
+
 \begin{proof}
-We want to show that any Cauchy sequence of continuous functions, $(f_n)$, converges to a continuous function.
+We first show that the set of bounded functions, $B(T)$, is complete.
+So, we want to show that any Cauchy sequence of bounded functions, $(f_n)$, converges to a bounded function.
 
-$\R$ is complete: so for each $x \in T$, $(f_n(x))$ converges to a point. We define $f: T \to \R$ by $f(x) = \lim\limits_{n \to \infty} f_n(x)$.
+Note that $T$ is complete: so for each $x \in T$, $(f_n(x))$ converges to a point. We define $f: T \to \R$ by $f(x) = \lim\limits_{n \to \infty} f_n(x)$.
 
-Now: let $\vep >0$. Choose $N$ such that for all $n,m \geq N$, ${f_n-f_m} < \frac{\vep}{2}$. 
+$f$ is bounded: 
+There is an $N$ such that for all $n,m \geq N$, $\norm{f_n-f_m} < 1$.
+If $m \geq N$ and $x \in X$, then $\absval{f_N(x) - f_m(x)} < 1$.
+So by taking a limit as $m \to infty$, we have $\absval{f_N(x) - f(x)} \leq 1$ for all $x \in X$.
+Because $f_N$ is bounded, this means that $f$ is bounded.
+
+Now: let $\vep >0$. Choose $N$ such that for all $n,m \geq N$, $\norm{f_n-f_m} < \frac{\vep}{2}$. 
 Then for all $x \in T$ and $n,m \geq N$, , we have $\absval{f_n(x) - f_m(x)} < \frac{\vep}{2}$.
 By taking a limit as $m \to \infty$, we have for all $x \in T$ and $n \geq N$, $\absval{f_n(x) - f(x)} \leq \frac{\vep}{2}$.
 
 So $\norm{f_n - f} \leq \frac{\vep}{2} < \vep$ for all $n \geq N$; in other words, $f_n \to f$.
 
-Also, $f$ is continuous because $f_n$ is a sequence of continuous functions that converges to $f$ uniformly.
+Next, recall that $C(T)$ is a closed subset of $B(T)$; because $C(T)$ is a closed subset of a complete metric space, it is complete.
 
 \end{proof}
 
@@ -460,7 +476,7 @@ is dense.
 \end{thm}
 
 \begin{proof}
-We need to show that given a nonempty open set $U$, that $\bigcap E_n \cap U$ is nonempty.
+We need to show that if $U$ is a nonempty open set, then $\bigcap E_n \cap U$ is nonempty.
 
 First, $E_1 \cap U$ is nonempty and open.
 So there is a ball, $B(x_1,r_1) \subset E_1 \cap U$.
@@ -469,8 +485,6 @@ Define $C_1 = \overline{B(x_1,\vep_1)}$.
 Observe that $C_1$ is closed and nonempty. Also, $C_1 \subset U$.
 
 Now, assume that for all $n \in \N$ such that $n < N$, we have constructed $C_{n}$, $x_{n}$, and $\vep_{n}$ such that $C_{n} = \overline{B(x_{n},\vep_{n})}$, $C_n \subset C_{n-1}$ (if $n >1$), $C_{n} \subset E_{n}$, and $\vep_{n} < \frac{1}{n}$.
-
-\colorcomment{Thistle}{I'm not 100\% sure about the above line. I think I hit everything, but I could easily have missed something.}
 
 Note that $E_N \cap B(x_{N-1},\vep_{N-1})$ is nonempty and open.
 So there is a ball, $B(x_N,r_N) \subset E_N \cap B(x_{N-1},\vep_{N-1})$.
@@ -504,7 +518,7 @@ E_n = \{f \in C(T) : Mf > n\}
 
 is a collection of open, dense subsets of a complete space, $C(T)$. 
 So Baire's Theorem applies: $\bigcap\limits_{n=1}^\infty E_n $ is dense.
-The above set is the set of functions, $f \in C(T)$, such that $Mf >n$ for all $n \in \N$.
+This is the set of functions, $f \in C(T)$, such that $Mf >n$ for all $n \in \N$.
 This is a subset of the set of functions whose Fourier series diverges at $0$.
 So the set of functions whose Fourier series diverges at $0$ contains a dense subset, it is dense.
 

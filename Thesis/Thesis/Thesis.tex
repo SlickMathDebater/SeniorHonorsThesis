@@ -202,14 +202,17 @@ It is tempting to hope that one could extend this theorem a little more to get t
 If $X$ is a metric space, $r$ is a real number with $r>0$, and $x \in X$, then $B(x,r)$ is the $r$-ball centered at $x$.
 \end{definition}
 
-To reduce the complexity of notation, we say that
+To reduce the complexity of notation, we say that $T = [0, 2 \pi]$.
+
+\colorcomment{Thistle}{How do I make this definition a sentence that isn't terrible?}
 
 \begin{definition}
-$T = [0, 2 \pi]$
-\end{definition}
+If $f$ is a continuous function, $n \in \N$, and $x \in T$, then the $n$-th partial sum of the Fourier series of $f$ at $x$ is 
 
-\begin{definition}
-If $f$ is a continuous function, $n \in \N$, and $x \in \R$, then $S_n(f,x) = \sum\limits_{j=-n}^n c_n e^{ijx}$, where $c_n = \frac{1}{2 \pi} \int\limits_0^{2\pi} f(t)e^{-ijt} dt$. We call this the $n$-th partial sum of the Fourier series of $f$.
+\begin{displaymath}
+S_n(f,x) = \sum\limits_{j=-n}^n c_n e^{ijx},
+\end{displaymath}
+where $c_n = \frac{1}{2 \pi} \int\limits_0^{2\pi} f(t)e^{-ijt} dt$.
 \end{definition}
 
 \begin{definition}
@@ -218,17 +221,15 @@ If $f$ is a bounded function, then $\norm{f} = \sup\limits_{t \in T} \{\absval{f
 
 \begin{definition}
 For each $n \in \N$, we define $D_n: T \to \R$ by
-
-
 \begin{displaymath}
    D_n(x) = \sum\limits_{j=-n}^n e^{ijx}
 \end{displaymath} 
-
 \end{definition}
 
 Also, we freely use the following well-known theorems:
 
 \begin{thm}
+For all $n \in \N$, 
 \begin{displaymath}
    D_n(x) = \left\{
      \begin{array}{lr}
@@ -254,7 +255,7 @@ First, for each $A \in \R$ we build a bounded, continuous function with some par
 We then consider sets of these functions with some partial sum of their Fourier series larger than some number at the point $0$.
 We then show that these sets are open and dense. 
 After that, we apply Baire's Theorem, which yields a dense, open set of functions whose Fourier series are unbounded at the point $0$. 
-This dense, open set being nonempty yields a continuous function whose Fourier series diverges at a point.}
+This dense, open set is nonempty; we have a continuous function whose Fourier series diverges at a point.}
 
 \subsection{The Construction of Bounded, Continuous Functions With Some Partial Sum of its Fourier Series Larger Than A Given Real Number}
 
@@ -299,13 +300,13 @@ So $c_n \geq \frac{1}{30 \pi} \sum\limits_{j=1}^n \frac{1}{ j}$, and $\sum\limit
 So we make the following definition:}
 
 \begin{definition}
-If $f \in C(T)$ , then $Mf = \sup\{\absval{S_m(f,0)} : m \in \N\}$ 
+If $f \in C(T)$ , then $Mf = \sup\{\absval{S_n(f,0)} : n \in \N\}$ 
 \end{definition}
 
 %Work on the below.
 
 \colorcomment{RoyalBlue}{Ultimately, we want to build a function with $Mf = \infty$.
-So, we should try to build a sequence of uniformly bounded functions, $f_n$, such that $Mf_n \to \infty$; 
+One way to do this is to build a sequence of uniformly bounded functions, $f_n$, such that $Mf_n \to \infty$; 
 if we can do that, then we should be able to build the function we want.
 We build this sequence rather naturally out of the proof of the above theorem.}
 
@@ -333,7 +334,7 @@ So $g_n \ast D_n(0) \to \infty$. In other words, for each $A$ there is an $n \in
 \end{proof}
 
 \begin{thm}
-For every $\ep >0$ and every real number, $A$, there is an $f \in C(T)$ such that $\norm{f} = \vep $ and $Mf > A$. 
+For every $\vep >0$ and every real number, $A$, there is an $f \in C(T)$ such that $\norm{f} = \vep $ and $Mf > A$. 
 
 \end{thm}
 
@@ -404,7 +405,7 @@ Let $f, g \in C(T)$. Then we have:
 &= \norm{f-g} \int\limits_0^{2\pi} \absval{D_n(t)}dt
 \end{align*}
 
-This means that for any $f,g \in C(T)$, $\absval{\la_n(f) - \la_n(g)} \leq c_n \norm{f-g}$ for some constant $c_n$; $\la_n$ is Lipschitz.
+This means that for any $f,g \in C(T)$, $\absval{\la_n(f) - \la_n(g)} \leq c_n \norm{f-g}$ for some constant $c_n$; thus, $\la_n$ is Lipschitz.
 
 \end{proof}
 
@@ -420,14 +421,14 @@ So, we want to show that any Cauchy sequence of bounded functions, $(f_n)$, conv
 
 Note that $T$ is complete: so for each $x \in T$, $(f_n(x))$ converges to a point. We define $f: T \to \R$ by $f(x) = \lim\limits_{n \to \infty} f_n(x)$.
 
-$f$ is bounded: 
+Now, $f$ is bounded: 
 There is an $N$ such that for all $n,m \geq N$, $\norm{f_n-f_m} < 1$.
 If $m \geq N$ and $x \in X$, then $\absval{f_N(x) - f_m(x)} < 1$.
-So by taking a limit as $m \to infty$, we have $\absval{f_N(x) - f(x)} \leq 1$ for all $x \in X$.
+So by taking a limit as $m \to \infty$, we have $\absval{f_N(x) - f(x)} \leq 1$ for all $x \in X$.
 Because $f_N$ is bounded, this means that $f$ is bounded.
 
 Now: let $\vep >0$. Choose $N$ such that for all $n,m \geq N$, $\norm{f_n-f_m} < \frac{\vep}{2}$. 
-Then for all $x \in T$ and $n,m \geq N$, , we have $\absval{f_n(x) - f_m(x)} < \frac{\vep}{2}$.
+Then for all $x \in T$ and $n,m \geq N$, we have $\absval{f_n(x) - f_m(x)} < \frac{\vep}{2}$.
 By taking a limit as $m \to \infty$, we have for all $x \in T$ and $n \geq N$, $\absval{f_n(x) - f(x)} \leq \frac{\vep}{2}$.
 
 So $\norm{f_n - f} \leq \frac{\vep}{2} < \vep$ for all $n \geq N$; in other words, $f_n \to f$.
@@ -436,11 +437,11 @@ Next, recall that $C(T)$ is a closed subset of $B(T)$; because $C(T)$ is a close
 
 \end{proof}
 
-\colorcomment{RoyalBlue}{By the above three theorems, we have that $E_1, E_2 \ldots$ is a collection of open, dense sets in a complete metric space.}
+\colorcomment{RoyalBlue}{By the above three theorems, we have that $E_1, E_2, \ldots$ is a collection of open, dense sets in a complete metric space.}
 
 \subsection{Baire's Theorem}
 
-\colorcomment{RoyalBlue}{So, we now have a collection of open, dense sets in a complete metric space. 
+\colorcomment{RoyalBlue}{We now have a collection of open, dense sets in a complete metric space. 
 We want to show that their intersection is nonempty; a dramatic way of doing this is to show that the intersection is dense. 
 A flair for the dramatic is necessary in life and mathematics, so this is how we should proceed.}
 
@@ -511,11 +512,7 @@ In fact, the set of functions in $C(T)$ whose Fourier series diverges at $0$ is 
 \begin{proof}
 
 Recall that 
-
-\begin{displaymath}
-E_n = \{f \in C(T) : Mf > n\}
-\end{displaymath}
-
+$E_n = \{f \in C(T) : Mf > n\}$
 is a collection of open, dense subsets of a complete space, $C(T)$. 
 So Baire's Theorem applies: $\bigcap\limits_{n=1}^\infty E_n $ is dense.
 This is the set of functions, $f \in C(T)$, such that $Mf >n$ for all $n \in \N$.

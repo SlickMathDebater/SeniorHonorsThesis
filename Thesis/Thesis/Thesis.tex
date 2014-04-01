@@ -144,6 +144,7 @@
 \usepackage{verbatim} 
 \usepackage{slashed}
 \usepackage[mathscr]{euscript}
+\usepackage{graphicx}
 
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{prop}[thm]{Proposition}
@@ -168,11 +169,11 @@ In fact, the set of continuous functions whose Fourier series diverges at $0$ is
 
 \maketitle
 
-\colorcomment{Violet}{Note to Dr. Ullrich: I'm colorcoding this thing. Black is text I half-think should go in the final thing. Purple are direct statements to you. Red is placeholders. Blue is exposition, which I'll need lots of help with.}
+\colorcomment{Green}{Note to Dr. Ullrich: I'm colorcoding this thing. Black is text I half-think should go in the final thing. Green are direct statements to you. Red is placeholders. Blue is exposition, which I'll need lots of help with.}
 
-\colorcomment{Violet}{I need to make sure that I'm not wrong about the history here. Do we have a book I can reference or something?}
+\colorcomment{Green}{I need to make sure that I'm not wrong about the history here. Do we have a book I can reference or something?}
 
-\colorcomment{Violet}{Speaking of references, what should I do with respect to citations?}
+\colorcomment{Green}{Speaking of references, what should I do with respect to citations?}
 
 \section{Introduction}
 
@@ -180,7 +181,6 @@ In fact, the set of continuous functions whose Fourier series diverges at $0$ is
 %Say what Fourier believed.
 %State Dini's test.
 %Explain how Dini's test covers a lot of functions, and that it's only just a bit stronger than continuity.
-%Explain how missing this gap makes sense given the tools Fourier had.
 %It look like it do but it don't.
 
 \colorcomment{RoyalBlue}{In The Analytical Theory of Heat \colorcomment{red}{citationstuff} Fourier claimed that any periodic function, continuous or not, can be expressed as a Fourier Series. 
@@ -204,15 +204,15 @@ If $X$ is a metric space, $r$ is a real number with $r>0$, and $x \in X$, then $
 
 To reduce the complexity of notation, we say that $T = [0, 2 \pi]$.
 
-\colorcomment{Thistle}{How do I make this definition a sentence that isn't terrible?}
+\colorcomment{Green}{How do I make this definition a sentence that isn't terrible?}
 
 \begin{definition}
 If $f$ is a continuous function, $n \in \N$, and $x \in T$, then the $n$-th partial sum of the Fourier series of $f$ at $x$ is 
 
 \begin{displaymath}
-S_n(f,x) = \sum\limits_{j=-n}^n c_n e^{ijx},
+S_n(f,x) = \sum\limits_{j=-n}^n c_j e^{ijx},
 \end{displaymath}
-where $c_n = \frac{1}{2 \pi} \int\limits_0^{2\pi} f(t)e^{-ijt} dt$.
+where $c_j = \frac{1}{2 \pi} \int\limits_0^{2\pi} f(t)e^{-ijt} dt$.
 \end{definition}
 
 \begin{definition}
@@ -252,7 +252,7 @@ For any $f \in C(T)$, $f$ is bounded.
 
 \colorcomment{RoyalBlue}{A rough sketch of the proof follows. 
 First, for each $A \in \R$ we build a bounded, continuous function with some partial sum of its Fourier series larger than $A$ at $0$. 
-We then consider sets of these functions with some partial sum of their Fourier series larger than some number at the point $0$.
+We then consider sets of continuous functions with some partial sum of its Fourier series larger than $n$ for each $n \in \N$.
 We then show that these sets are open and dense. 
 After that, we apply Baire's Theorem, which yields a dense, open set of functions whose Fourier series are unbounded at the point $0$. 
 This dense, open set is nonempty; we have a continuous function whose Fourier series diverges at a point.}
@@ -277,7 +277,7 @@ First: $\absval{D_n(x)} \geq \frac{\frac{1}{2}}{\sin(\frac{x}{2})}$ if $x \in [\
 
 This naturally yields the inequality $\int\limits_0^{2\pi} \absval{D_n(x)} dx \geq \sum\limits_{j=1}^n \frac{2 \pi}{6n \sin(\frac{5\pi j}{6(n+\frac{1}{2})})}$. 
 
-\colorcomment{red}{*An illustration goes here*.}
+%\includegraphics{cn.jpg}
 
 Also, recall that for all $x \in T$, $x > \sin(x)$. 
 So, $\frac{1}{x} < \frac{1}{\sin(x)}$ for all $x \in T$.
@@ -300,10 +300,8 @@ So $c_n \geq \frac{1}{30 \pi} \sum\limits_{j=1}^n \frac{1}{ j}$, and $\sum\limit
 So we make the following definition:}
 
 \begin{definition}
-If $f \in C(T)$ , then $Mf = \sup\{\absval{S_n(f,0)} : n \in \N\}$ 
+If $f \in C(T)$, then $Mf = \sup\{\absval{S_n(f,0)} : n \in \N\}$ 
 \end{definition}
-
-%Work on the below.
 
 \colorcomment{RoyalBlue}{Ultimately, we want to build a function with $Mf = \infty$.
 One way to do this is to build a sequence of uniformly bounded functions, $f_n$, such that $Mf_n \to \infty$; 
@@ -317,7 +315,7 @@ For every real number, $A$, there is an $f \in C(T)$ such that $\norm{f} = 1$ an
 \begin{proof}
 For each $n \in \N$, choose $g_n: T \to \R$ with $\norm{g_n} = 1$, with $g_nD_n(t) \geq 0$ for all $t \in T$,  $g_n(t) = 1$ if $t \in [\frac{\pi k}{6},\frac{5 \pi k}{6}]$ for some odd $k \in \N$  and $g_n(t) = -1$ if $t \in [\frac{\pi k}{6},\frac{5 \pi k}{6}]$ for some even $k \in \N$.
 
-\colorcomment{red}{*Illustration goes here.*}
+%\includegraphics{gn.jpg}
 
 So, similar to the above,
 
@@ -410,10 +408,10 @@ This means that for any $f,g \in C(T)$, $\absval{\la_n(f) - \la_n(g)} \leq c_n \
 \end{proof}
 
 \begin{thm}
-$C(T)$ is a complete metric space.
+$C(T)$ is a complete metric space. %Fix the sentence-starts-with-word thing.
 \end{thm}
 
-\colorcomment{Violet}{I did a major rewrite of this. Please look over it, as well as the relevant definitions.}
+\colorcomment{Green}{I did a major rewrite of this. Please look over it, as well as the relevant definitions.}
 
 \begin{proof}
 We first show that the set of bounded functions, $B(T)$, is complete.
@@ -498,7 +496,7 @@ Also, note that because $\vep_n \to 0$, we have that $\diam(C_n) \to 0$.
 So $\bigcap\limits_{n=1}^\infty C_n$ has exactly one point.
 This point is also in $U$, because $C_1 \subset U$.
 This point is also in $E_n$ for all $n \in \N$, because $C_n \subset E_n$ for all $n \in \N$.
-So $\bigcap\limits_{n=1}^\infty E_n \cap U$ isn't empty.
+So $\bigcap\limits_{n=1}^\infty E_n \cap U$ is nonempty.
 
 \end{proof}
 
@@ -525,8 +523,8 @@ Dense subsets of $C(T)$ are nonempty, so there is a continuous function whose Fo
 
 \section{Closing Remarks}
 
-\colorcomment{RoyalBlue}{Consider the function we've shown exists: it rather obviously must fail the hypotheses of Dini's test, otherwise it would have its Fourier series converge. 
-So, there's continuous functions such that \colorcomment{red}{Modulus of continuity is pretty bad}.
+\colorcomment{RoyalBlue}{Consider the function we have shown exists: it must fail the hypotheses of Dini's test, otherwise it would have its Fourier series converge. 
+So, there are continuous functions such that \colorcomment{red}{Modulus of continuity is pretty bad}.
 Now, \colorcomment{red}{Some examples go here.}}
 
 \colorcomment{RoyalBlue}{Another interesting point to make is that the set of functions we constructed is dense. 

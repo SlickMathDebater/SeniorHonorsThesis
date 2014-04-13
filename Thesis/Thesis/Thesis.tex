@@ -171,8 +171,6 @@ In fact, the set of continuous functions whose Fourier series diverges at $0$ is
 
 \colorcomment{Green}{Note to Dr. Ullrich: I'm colorcoding this thing. Black is text I half-think should go in the final thing. Green are direct statements to you. Red is placeholders. Blue is exposition, which I'll need lots of help with.}
 
-\colorcomment{Green}{I need to make sure that I'm not wrong about the history here. Do we have a book I can reference or something?}
-
 \colorcomment{Green}{Speaking of references, what should I do with respect to citations?}
 
 \section{Introduction}
@@ -183,18 +181,18 @@ In fact, the set of continuous functions whose Fourier series diverges at $0$ is
 %Explain how Dini's test covers a lot of functions, and that it's only just a bit stronger than continuity.
 %It look like it do but it don't.
 
-\colorcomment{RoyalBlue}{In The Analytical Theory of Heat \colorcomment{red}{citationstuff} Fourier claimed that any periodic function, continuous or not, can be expressed as a Fourier Series. 
+\colorcomment{RoyalBlue}{In The Analytical Theory of Heat \colorcomment{red}{citationstuff} Fourier claimed that any periodic function can be expressed as a Fourier Series, even if it was discontinuous. 
 Now, observe Dini's Test:}
 
 \begin{thm}
-\colorcomment{red}{If $f \in L^1[0, 2\pi]$, $x_0 \in f^{-1}(\R)$, and $F(x) = \frac{f(x+x_0) - f(x_0)}{x}$ is Lebesgue-integrable over some open neighborhood of $x_0$, then the Fourier series of $f$ converges at $x_0$.}
+\colorcomment{red}{If $f \in L^1[0, 2\pi]$, $x_0 \in f^{-1}([0,2\pi])$, and $\int\limits_{-\de}^{\de} \absval{\frac{f(x+x_0) - f(x_0)}{x}} < \infty$ for some $\de >0$, then the Fourier series of $f$ converges at $x_0$.}
 \end{thm}
 
 \colorcomment{RoyalBlue}{The condition required to apply Dini's test is ``Just a little better than continuity''; if $f$ is continuous, then the term $f(x+x_0) - f(x_0)$ approaches $0$ as $x$ approaches $0$.
 The condition for applying Dini's test is that $f(x+x_0) - f(x_0)$ approaches $0$ \colorcomment{red}{``quickly enough''}.
-It is tempting to hope that one could extend this theorem a little more to get the result that Fourier believed in.}
+It is tempting to hope that we could extend this theorem a little more to get the result that Fourier believed in.}
 
-\colorcomment{RoyalBlue}{However, as this paper will demonstrate, this is not true.}
+\colorcomment{RoyalBlue}{However, as this paper will demonstrate, we cannot.}
 
 \section{Notation}
 
@@ -202,27 +200,28 @@ It is tempting to hope that one could extend this theorem a little more to get t
 If $X$ is a metric space, $r$ is a real number with $r>0$, and $x \in X$, then $B(x,r)$ is the $r$-ball centered at $x$.
 \end{definition}
 
-To reduce the complexity of notation, we say that $T = [0, 2 \pi]$.
+\begin{definition}
+We say that $T = \R / 2\pi \Z$. %Fix formatting
+\end{definition}
 
-\colorcomment{Green}{How do I make this definition a sentence that isn't terrible?}
 
 \begin{definition}
-If $f$ is a continuous function, $n \in \N$, and $x \in T$, then the $n$-th partial sum of the Fourier series of $f$ at $x$ is 
+If $f \in C(T)$, $n \in \N$, and $x \in T$, then the $n$-th partial sum of the Fourier series of $f$ at $x$ is 
 
 \begin{displaymath}
-S_n(f,x) = \sum\limits_{j=-n}^n c_j e^{ijx},
+S_n(f,x) = \sum\limits_{j=-n}^n c_j e^{-ijx},
 \end{displaymath}
-where $c_j = \frac{1}{2 \pi} \int\limits_0^{2\pi} f(t)e^{-ijt} dt$.
+where $c_j = \frac{1}{2 \pi} \int\limits_0^{2\pi} f(t)e^{ijt} dt$.
 \end{definition}
 
 \begin{definition}
-If $f$ is a bounded function, then $\norm{f} = \sup\limits_{t \in T} \{\absval{f(t)}\}$
+If $f$ is a bounded function on $T$, then $\norm{f} = \sup\limits_{t \in T} \{\absval{f(t)}\}$
 \end{definition}
 
 \begin{definition}
 For each $n \in \N$, we define $D_n: T \to \R$ by
 \begin{displaymath}
-   D_n(x) = \sum\limits_{j=-n}^n e^{ijx}
+   D_n(x) = \sum\limits_{j=-n}^n e^{-ijx}
 \end{displaymath} 
 \end{definition}
 
@@ -252,7 +251,7 @@ For any $f \in C(T)$, $f$ is bounded.
 
 \colorcomment{RoyalBlue}{A rough sketch of the proof follows. 
 First, for each $A \in \R$ we build a bounded, continuous function with some partial sum of its Fourier series larger than $A$ at $0$. 
-We then consider sets of continuous functions with some partial sum of its Fourier series larger than $n$ for each $n \in \N$.
+We then consider sets of continuous functions with some partial sum of their Fourier series larger than $n$ for each $n \in \N$.
 We then show that these sets are open and dense. 
 After that, we apply Baire's Theorem, which yields a dense, open set of functions whose Fourier series are unbounded at the point $0$. 
 This dense, open set is nonempty; we have a continuous function whose Fourier series diverges at a point.}
@@ -262,13 +261,13 @@ This dense, open set is nonempty; we have a continuous function whose Fourier se
 \colorcomment{RoyalBlue}{Inspiration for constructing the titular functions comes from the following theorem.}
 
 \begin{thm}
-If for each $n \in \N$, we define $c_n \in \R$ to be
+For each $n \in \N$, define $c_n \in \R$ to be
 
 \begin{displaymath}
-c_n = \frac{1}{2 \pi} \int\limits_0^{2\pi} \absval{D_n(x)} dx,
+c_n = \frac{1}{2 \pi} \int\limits_0^{2\pi} \absval{D_n(x)} dx.
 \end{displaymath}
 
-then $c_n \to \infty$.
+The sequence $c_n \to \infty$.
 \end{thm}
 
 \begin{proof}
@@ -282,7 +281,7 @@ This naturally yields the inequality $\int\limits_0^{2\pi} \absval{D_n(x)} dx \g
 Also, recall that for all $x \in T$, $x > \sin(x)$. 
 So, $\frac{1}{x} < \frac{1}{\sin(x)}$ for all $x \in T$.
 
-This means that we have
+This means that 
 
 \begin{align*}
 c_n &\geq \frac{1}{2 \pi} \sum\limits_{j=1}^n \frac{2 \pi}{6n \sin(\frac{5\pi j}{6(n+\frac{1}{2})})}\\
@@ -309,11 +308,11 @@ if we can do that, then we should be able to build the function we want.
 We build this sequence rather naturally out of the proof of the above theorem.}
 
 \begin{thm}
-For every real number, $A$, there is an $f \in C(T)$ such that $\norm{f} = 1$ and $Mf > A$. 
+For each $A \in \R$, there is an $f \in C(T)$ such that $\norm{f} = 1$ and $Mf > A$. 
 \end{thm}
 
 \begin{proof}
-For each $n \in \N$, choose $g_n: T \to \R$ with $\norm{g_n} = 1$, with $g_nD_n(t) \geq 0$ for all $t \in T$,  $g_n(t) = 1$ if $t \in [\frac{\pi k}{6},\frac{5 \pi k}{6}]$ for some odd $k \in \N$  and $g_n(t) = -1$ if $t \in [\frac{\pi k}{6},\frac{5 \pi k}{6}]$ for some even $k \in \N$.
+For each $n \in \N$, choose $g_n: T \to \R$ with $\norm{g_n} = 1$, $g_nD_n(t) \geq 0$ for all $t \in T$,  $g_n(t) = 1$ if $t \in [\frac{\pi k}{6},\frac{5 \pi k}{6}]$ for some odd $k \in \N$  and $g_n(t) = -1$ if $t \in [\frac{\pi k}{6},\frac{5 \pi k}{6}]$ for some even $k \in \N$.
 
 %\includegraphics{gn.jpg}
 
@@ -332,7 +331,7 @@ So $g_n \ast D_n(0) \to \infty$. In other words, for each $A$ there is an $n \in
 \end{proof}
 
 \begin{thm}
-For every $\vep >0$ and every real number, $A$, there is an $f \in C(T)$ such that $\norm{f} = \vep $ and $Mf > A$. 
+For each $\vep >0$ and each $A \in \R$, there is an $f \in C(T)$ such that $\norm{f} = \vep $ and $Mf > A$. 
 
 \end{thm}
 
@@ -352,7 +351,7 @@ E_n = \{f \in C(T) : Mf > n\}
 \end{displaymath}
 
 \begin{thm}
-For all $n \in \N$, $E_n$ is dense.
+For each $n \in \N$, $E_n$ is dense.
 \end{thm}
 
 \begin{proof}
@@ -369,7 +368,7 @@ So $B(f, \vep) \cap E_n$ is nonempty.
 \end{proof}
 
 \begin{thm}
-For all $n \in \N$, $E_n$ is open.
+For each $n \in \N$, $E_n$ is open.
 \end{thm}
 
 \begin{proof}
@@ -383,14 +382,14 @@ Now, consider the following:
 
 \begin{align*}
 E_n &= \{f \in C(T): Mf> n\} \\
-&= \bigcup\limits_{N \in \N} \{f \in C(T) : \la_N > n\}\\
+&= \bigcup\limits_{N \in \N} \{f \in C(T) : \la_N (f)> n\}\\
 &= \bigcup\limits_{N \in \N} \la_N^{-1}((n, \infty))
 \end{align*}
 
 It is sufficient to show that $\la_n$ is continuous for all $n \in \N$; if so, then the right hand side of the above equation is open.
 We do this by showing that $\la_n$ is Lipschitz.
 
-Let $f, g \in C(T)$. Then we have:
+If $f, g \in C(T)$, then we have:
 
 \begin{align*}
 \absval{\la_n(f) - \la_n(g)} &= \absval{\absval{f \ast D_n(0)} - \absval{g \ast D_n(0)}} \\
@@ -483,7 +482,7 @@ By taking $\vep_1 = \min(\frac{r_1}{2},1)$, we have $\overline{B(x_1,\vep_1)} \s
 Define $C_1 = \overline{B(x_1,\vep_1)}$.
 Observe that $C_1$ is closed and nonempty. Also, $C_1 \subset U$.
 
-Now, assume that for all $n \in \N$ such that $n < N$, we have constructed $C_{n}$, $x_{n}$, and $\vep_{n}$ such that $C_{n} = \overline{B(x_{n},\vep_{n})}$, $C_n \subset C_{n-1}$ (if $n >1$), $C_{n} \subset E_{n}$, and $\vep_{n} < \frac{1}{n}$.
+Now, assume that for each $n \in \N$ such that $n < N$, we have constructed $C_{n}$, $x_{n}$, and $\vep_{n}$ such that $C_{n} = \overline{B(x_{n},\vep_{n})}$, $C_n \subset C_{n-1}$ (if $n >1$), $C_{n} \subset E_{n}$, and $\vep_{n} < \frac{1}{n}$.
 
 Note that $E_N \cap B(x_{N-1},\vep_{N-1})$ is nonempty and open.
 So there is a ball, $B(x_N,r_N) \subset E_N \cap B(x_{N-1},\vep_{N-1})$.
@@ -492,10 +491,10 @@ Define $C_N = \overline{B(x_N,\vep_N)}$.
 Observe that $C_N$ is closed and nonempty. Also, $C_N \subset C_{N-1}$.
 
 So we have a collection of closed, nonempty, nested sets.
-Also, note that because $\vep_n \to 0$, we have that $\diam(C_n) \to 0$. 
+Also, note that $\diam(C_n) \to 0$ because $\vep_n \to 0$. 
 So $\bigcap\limits_{n=1}^\infty C_n$ has exactly one point.
 This point is also in $U$, because $C_1 \subset U$.
-This point is also in $E_n$ for all $n \in \N$, because $C_n \subset E_n$ for all $n \in \N$.
+Also, this point is in $E_n$ for all $n \in \N$, because $C_n \subset E_n$ for all $n \in \N$.
 So $\bigcap\limits_{n=1}^\infty E_n \cap U$ is nonempty.
 
 \end{proof}

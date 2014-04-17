@@ -5,22 +5,18 @@
 %0.abc: a: math draft #. b: exposition draft # c: formatting draft number.
 
 %Current status:
-%Barebones:
-%Parts 1-3: Edited, waiting approval.
-%Parts 4-6: Proofs written. Old Man Approved!
-%Baire's Theorem: Edited, awaiting approval.
-%Main part: Written, Old Man Approved!.
+%Barebones: ALL CLEAR. 
 
 %Exposition:
-%Introduction: First draft done. Awaiting Feedback.
-%Parts 1-3: Begun, edit when awake
-%Parts 4-6: Begun, edit when awake
-%Baire's Theorem: Begun, edit when awake
-%Main part: Not begun
-%Outro: Not begun
+%Introduction: Not researched.
+%Proof Outline: Planned. Not researched.
+%Outro: Researched. Written. Not approved.
 
 %Formatting:
 %Will figure out later.
+
+%Citations:
+%Must figure out almost immediately.
 
 
 \documentclass{amsart}
@@ -134,7 +130,7 @@
 \newcommand{\colorcomment}[2]{\textcolor{#1}{#2}} %First of these leaves in comments. Second one kills them.
 %\newcommand{\colorcomment}[2]{}
 
-\newcommand{\absval}[1]{\lvert #1 \rvert}
+\newcommand{\absval}[1]{\left| #1 \right|}
 \newcommand{\norm}[1]{\|#1\|}
 
 \usepackage{fancyhdr}
@@ -171,41 +167,26 @@ In fact, the set of continuous functions whose Fourier series diverges at $0$ is
 
 \colorcomment{Green}{Note to Dr. Ullrich: I'm colorcoding this thing. Black is text I half-think should go in the final thing. Green are direct statements to you. Red is placeholders. Blue is exposition, which I'll need lots of help with.}
 
-\colorcomment{Green}{Speaking of references, what should I do with respect to citations?}
-
 \section{Introduction}
 
-%Exposition here goes like this:
-%Say what Fourier believed.
-%State Dini's test.
-%Explain how Dini's test covers a lot of functions, and that it's only just a bit stronger than continuity.
-%It look like it do but it don't.
+\colorcomment{RoyalBlue}{In The Analytical Theory of Heat, Fourier claimed that any periodic function can be expressed as a Fourier Series, even if it was discontinuous. \colorcomment{red}{(cite it)}
+Indeed, many great mathematicians of the time, such as Cauchy, had produced flawed proofs of this. 
+After having proved a result that was ``really close'' to what was desired, Dirichlet seemed convinced of the truth of this. 
+Over time, other great mathematicians, such as Dedekind, Riemann, and Weierstrass were also convinced. 
+However, Du Bois-Reymond constructed a counterexample! \colorcomment{red}{(cite Korner)}}
 
-\colorcomment{RoyalBlue}{In The Analytical Theory of Heat \colorcomment{red}{citationstuff} Fourier claimed that any periodic function can be expressed as a Fourier Series, even if it was discontinuous. 
-Before continuing...}
+\colorcomment{RoyalBlue}{This paper is written as a \colorcomment{red}{nod} to the rich history of this problem.}
+\colorcomment{Green}{(The rich history which I need to read/write more about.)}
+
+\section{Notation}
 
 \begin{definition}
 We say that $T = \R / 2\pi \Z$.
 \end{definition}
 
-\colorcomment{RoyalBlue}{Now, observe Dini's Test:}
-
-\begin{thm}
-If $f \in C(T)$, $x_0 \in T$, and $\int\limits_{-\de}^{\de} \absval{\frac{f(x+x_0) - f(x_0)}{x}} dx < \infty$ for some $\de >0$, then the Fourier series of $f$ converges at $x_0$.
-\end{thm}
-
-\colorcomment{RoyalBlue}{The condition required to apply Dini's test is ``Just a little better than continuity''; if $f$ is continuous, then the term $f(x+x_0) - f(x_0)$ approaches $0$ as $x$ approaches $0$.
-The condition for applying Dini's test is that $f(x+x_0) - f(x_0)$ approaches $0$ \colorcomment{red}{``quickly enough''}.
-It is tempting to hope that we could extend this theorem a little more to get the result that Fourier believed in.}
-
-\colorcomment{RoyalBlue}{However, as this paper will demonstrate, we cannot.}
-
-\section{Notation}
-
 \begin{definition}
 If $X$ is a metric space, $r$ is a real number with $r>0$, and $x \in X$, then $B(x,r)$ is the $r$-ball centered at $x$.
 \end{definition}
-
 
 \begin{definition}
 If $f \in C(T)$, $n \in \N$, and $x \in T$, then the $n$th partial sum of the Fourier series of $f$ at $x$ is 
@@ -252,11 +233,14 @@ For any $f \in C(T)$, $f$ is bounded.
 \section{Continuous Functions With Some Partial Sum of its Fourier Series Larger Than A Given Real Number}
 
 \colorcomment{RoyalBlue}{A rough sketch of the proof follows. 
-First, for each $A \in \R$ we build a continuous function bounded by $1$ and $-1$ with some partial sum of its Fourier series larger than $A$ at $0$. 
+First, for each $A \in \R$ we build a continuous function, $f$, with $\norm{f} = 1$ and with some partial sum of its Fourier series larger than $A$ at $0$. 
 We then consider sets of continuous functions with some partial sum of their Fourier series larger than $n$ for each $n \in \N$.
 We then show that these sets are open and dense. 
 After that, we apply Baire's Theorem, which yields a dense, open set of functions whose Fourier series are unbounded at the point $0$. 
 This dense, open set is nonempty; we have a continuous function whose Fourier series diverges at a point.}
+
+\colorcomment{RoyalBlue}{Those who are familiar with the subject area will recognize that this is similar to a standard proof of this fact. 
+In fact, this proof is based on an observation by Dr. David C. Ullrich about a proof that involves functional analysis: he saw that the parts of the proof involving functional analysis can be stripped away rather elegantly. He then produced an outline of a proof that is much more accessible to a student who is just beginning to study Fourier analysis.}
 
 \subsection{The Construction of Bounded, Continuous Functions With Some Partial Sum of its Fourier Series Larger Than A Given Real Number}
 
@@ -274,14 +258,14 @@ The sequence $c_n \to \infty$.
 
 \begin{proof}
 
-First: $\absval{D_n(x)} \geq \frac{1/2}{\sin(x/2)}$ if $x \in [\frac{\pi k}{6},\frac{5 \pi k}{6}]$ for some $k \in \N$.
+First: $\absval{D_n(x)} \geq \frac{1/2}{\sin(x/2)}$ if $x \in [\frac{\pi k}{6(n+1/2)},\frac{5 \pi k}{6(n+1/2)}]$ for some $k \in \N$.
 
 This naturally yields the inequality $\int\limits_0^{2\pi} \absval{D_n(x)} dx \geq \sum\limits_{j=1}^n \frac{2 \pi}{6n \sin(\frac{5\pi j}{6(n+1/2)})}$. 
 
 %\includegraphics{cn.jpg}
 
-Also, recall that for all $x \in T$, $x > \sin(x)$. 
-So, $\frac{1}{x} < \frac{1}{\sin(x)}$ for all $x \in T$.
+Also, recall that for all $x \in [0, 2\pi]$, $x > \absval{\sin(x)}$. 
+So, $\absval{\frac{1}{x}} < \absval{\frac{1}{\sin(x)}}$ for all $x \in (0, \pi) \cap (\pi, 2\pi)$.
 
 This means that 
 
@@ -315,7 +299,7 @@ For each $A \in \R$, there is an $f \in C(T)$ such that $\norm{f} = 1$ and $Mf >
 \end{thm}
 
 \begin{proof}
-For each $n \in \N$, choose $g_n: T \to \R$ with $\norm{g_n} = 1$, $g_nD_n(t) \geq 0$ for all $t \in T$,  $g_n(t) = 1$ if $t \in [\frac{\pi k}{6},\frac{5 \pi k}{6}]$ for some odd $k \in \N$  and $g_n(t) = -1$ if $t \in [\frac{\pi k}{6},\frac{5 \pi k}{6}]$ for some even $k \in \N$.
+For each $n \in \N$, choose $g_n: T \to \R$ with $\norm{g_n} = 1$, $g_nD_n(t) \geq 0$ for all $t \in T$,  $g_n(t) = 1$ if $t \in [\frac{\pi k}{6(n+1/2)},\frac{5 \pi k}{6(n+1/2)}]$ for some odd $k \in \N$  and $g_n(t) = -1$ if $t \in [\frac{\pi k}{6(n+1/2)},\frac{5 \pi k}{6(n+1/2)}]$ for some even $k \in \N$.
 
 %\includegraphics{gn.jpg}
 
@@ -419,7 +403,7 @@ $C(T)$ is a complete metric space. %Fix the sentence-starts-with-word thing.
 We first show that the set of bounded functions, $B(T)$, is complete.
 So, we want to show that any Cauchy sequence of bounded functions, $(f_n)$, converges to a bounded function.
 
-Note that $T$ is complete: so for each $x \in T$, $(f_n(x))$ converges to a point. We define $f: T \to \R$ by $f(x) = \lim\limits_{n \to \infty} f_n(x)$.
+Note that $\R$ is complete: so for each $x \in T$, $(f_n(x))$ converges to a point. We define $f: T \to \R$ by $f(x) = \lim\limits_{n \to \infty} f_n(x)$.
 
 Now, $f$ is bounded: 
 There is an $N$ such that for all $n,m \geq N$, $\norm{f_n-f_m} < 1$.
@@ -436,8 +420,6 @@ So $\norm{f_n - f} \leq \frac{\vep}{2} < \vep$ for all $n \geq N$; in other word
 Next, recall that $C(T)$ is a closed subset of $B(T)$; because $C(T)$ is a closed subset of a complete metric space, it is complete.
 
 \end{proof}
-
-\colorcomment{RoyalBlue}{By the above three theorems, we have that $E_1, E_2, \ldots$ is a collection of open, dense sets in a complete metric space.}
 
 \subsection{Baire's Theorem}
 
@@ -525,15 +507,34 @@ Dense subsets of $C(T)$ are nonempty, so there is a continuous function whose Fo
 
 \section{Closing Remarks}
 
+\colorcomment{RoyalBlue}{Recall Dini's Test:}
+
+\begin{thm}
+If $f \in C(T)$, $x_0 \in T$, and $\int\limits_{-\de}^{\de} \absval{\frac{f(x+x_0) - f(x_0)}{x}} dx < \infty$ for some $\de >0$, then the Fourier series of $f$ converges at $x_0$.
+\end{thm}
+
+\colorcomment{RoyalBlue}{The condition required to apply Dini's test is ``just a little better than continuity''; if $f$ is continuous, then the term $f(x+x_0) - f(x_0)$ approaches $0$ as $x$ approaches $0$.}
+
 \colorcomment{RoyalBlue}{Consider the function we have shown exists: it must fail the hypotheses of Dini's test, otherwise it would have its Fourier series converge. 
-An interesting point to make is that this function cannot be differentiable on any open neighborhood of $0$. 
-Else, the function would be Lipschitz, and thus Dini's test would apply. 
-\colorcomment{Green}{I think, also, that this function isn't differentiable at $0$. I have an idea of how this proof works (I think you just bash it over the head directly with Dini's test) and I'd like to run it by you sometime.}
-Now, \colorcomment{red}{Some examples go here.}}
+So, this function cannot be differentiable at $0$. 
+Else, the function would be Lipschitz at $0$, and thus Dini's test would apply. 
+In fact, there is a much weaker condition that allows us to apply Dini's test.}
+
+\begin{definition}
+A function, $f: T \to \R$, is Lip$(\alpha)$ at $x_0$ if there is a $c \in \R$ such that for all $x \in T$, $\absval{f(x_o) - f(x)} < c\absval{x_0-x}$. 
+\end{definition}
+
+\colorcomment{Green}{I'm not sure if I'm typesetting that in the standard way (or, honestly, if I'm saying that right). Is that fine, or should I do something like $Lip_\al$?}
+
+\colorcomment{RoyalBlue}{This is a very weak condition that is still stronger than continuity; it is right to think of this as being ``just a little better than continuity.''
+Indeed, a Lip$(\alpha)$ function has $\absval{f(x_o) - f(x)}$ approach $0$ ``quickly enough'' that we can apply Dini's test.
+This is a way to think of Dini's test; a continuous function that has $\absval{f(x_o) - f(x)}$ approach $0$ ``quickly enough'' has its Fourier series converge at $x_0$. 
+Because being Lip$(\alpha)$ is very weak, we should think of Dini's test as telling us that ``continuity is almost good enough.''
+}
 
 \colorcomment{RoyalBlue}{Another interesting point to make is that the set of functions we constructed is dense. 
 This means that any function can be approximated by a function whose Fourier series diverges at $0$. 
-What we can take away from this is that such functions aren't particularly rare: in a sense, these functions are always ``just around the corner,'' rather than ``hiding away in dark corners.''
+What we can take away from this is that such functions aren't particularly rare: in a sense, these functions are always ``just around the block,'' rather than ``hiding away in dark corners.''
 In other words, the result we had hoped for fails miserably. 
 However, that is fine; this provides for a richer, more interesting theory of Fourier Analysis.}
 

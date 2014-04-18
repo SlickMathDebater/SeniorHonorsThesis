@@ -126,6 +126,7 @@
 \newcommand{\scrZ}{\mathcal{Z}}
 
 \newcommand{\diam}{\text{\rm diam}}
+\newcommand{\Lip}{\text{\rm Lip}}
 
 \newcommand{\colorcomment}[2]{\textcolor{#1}{#2}} %First of these leaves in comments. Second one kills them.
 %\newcommand{\colorcomment}[2]{}
@@ -165,18 +166,15 @@ In fact, the set of continuous functions whose Fourier series diverges at $0$ is
 
 \maketitle
 
-\colorcomment{Green}{Note to Dr. Ullrich: I'm colorcoding this thing. Black is text I half-think should go in the final thing. Green are direct statements to you. Red is placeholders. Blue is exposition, which I'll need lots of help with.}
-
 \section{Introduction}
 
-\colorcomment{RoyalBlue}{In The Analytical Theory of Heat, Fourier claimed that any periodic function can be expressed as a Fourier Series, even if it was discontinuous. \colorcomment{red}{(cite it)}
+In The Analytical Theory of Heat, Fourier claimed that any periodic function can be expressed as a Fourier Series, even if it was discontinuous. \colorcomment{red}{(cite it)}
 Indeed, many great mathematicians of the time, such as Cauchy, had produced flawed proofs of this. 
 After having proved a result that was ``really close'' to what was desired, Dirichlet seemed convinced of the truth of this. 
 Over time, other great mathematicians, such as Dedekind, Riemann, and Weierstrass were also convinced. 
-However, Du Bois-Reymond constructed a counterexample! \colorcomment{red}{(cite Korner)}}
+However, Du Bois-Reymond constructed a counterexample! \colorcomment{red}{(cite Korner)}
 
-\colorcomment{RoyalBlue}{This paper is written as a \colorcomment{red}{nod} to the rich history of this problem.}
-\colorcomment{Green}{(The rich history which I need to read/write more about.)}
+This paper is written as a nod to the rich history of this problem.
 
 \section{Notation}
 
@@ -230,21 +228,23 @@ For any $f \in C(T)$, $(D_n \ast f)(x) = S_n(f,x)$.
 For any $f \in C(T)$, $f$ is bounded.
 \end{thm}
 
-\section{Continuous Functions With Some Partial Sum of its Fourier Series Larger Than A Given Real Number}
+\section{Continuous Functions With Some Partial Sum of Their Fourier Series Larger Than A Given Real Number}
 
-\colorcomment{RoyalBlue}{A rough sketch of the proof follows. 
+A rough sketch of the proof follows. 
 First, for each $A \in \R$ we build a continuous function, $f$, with $\norm{f} = 1$ and with some partial sum of its Fourier series larger than $A$ at $0$. 
 We then consider sets of continuous functions with some partial sum of their Fourier series larger than $n$ for each $n \in \N$.
-We then show that these sets are open and dense. 
-After that, we apply Baire's Theorem, which yields a dense, open set of functions whose Fourier series are unbounded at the point $0$. 
-This dense, open set is nonempty; we have a continuous function whose Fourier series diverges at a point.}
+We show that these sets are open and dense. 
+After that, we apply Baire's Theorem, which gives us a dense, open set of functions whose Fourier series are unbounded at the point $0$. 
+This dense, open set is nonempty; we have a continuous function whose Fourier series diverges at a point.
 
-\colorcomment{RoyalBlue}{Those who are familiar with the subject area will recognize that this is similar to a standard proof of this fact. 
-In fact, this proof is based on an observation by Dr. David C. Ullrich about a proof that involves functional analysis: he saw that the parts of the proof involving functional analysis can be stripped away rather elegantly. He then produced an outline of a proof that is much more accessible to a student who is just beginning to study Fourier analysis.}
+Those who are familiar with the subject area will recognize that this is similar to a standard proof of the existence of a continuous function whose Fourier series diverges. 
+In fact, this proof is based on an observation by Dr. David C. Ullrich about a proof that involves functional analysis. 
+Dr. Ullrich saw that the parts of the proof involving functional analysis can be stripped away. 
+He then produced an outline of a proof that is much more accessible to a student who is just beginning to study Fourier analysis.
 
-\subsection{The Construction of Bounded, Continuous Functions With Some Partial Sum of its Fourier Series Larger Than A Given Real Number}
+\subsection{The Construction of Bounded, Continuous Functions With Some Partial Sum of Their Fourier Series Larger Than A Given Real Number}\hspace*{\fill}
 
-\colorcomment{RoyalBlue}{Inspiration for constructing the titular functions comes from the proof of the following theorem.}
+Inspiration for constructing the titular functions comes from the proof of the following theorem.
 
 \begin{thm}
 For each $n \in \N$, define $c_n \in \R$ to be
@@ -258,41 +258,38 @@ The sequence $c_n \to \infty$.
 
 \begin{proof}
 
-First: $\absval{D_n(x)} \geq \frac{1/2}{\sin(x/2)}$ if $x \in [\frac{\pi k}{6(n+1/2)},\frac{5 \pi k}{6(n+1/2)}]$ for some $k \in \N$.
+First, $\absval{D_n(x)} \geq \frac{1/2}{\sin(x/2)}$ if $x \in [\frac{\pi k}{6(n+1/2)},\frac{5 \pi k}{6(n+1/2)}]$ for some $k \in \N$.
 
-This naturally yields the inequality $\int\limits_0^{2\pi} \absval{D_n(x)} dx \geq \sum\limits_{j=1}^n \frac{2 \pi}{6n \sin(\frac{5\pi j}{6(n+1/2)})}$. 
+Recall that for all $x \in [0, 2\pi]$, $x > \absval{\sin(x)}$. 
+So, $\absval{\frac{2}{x}} < \absval{\frac{1}{\sin(x/2)}}$ for all $x \in (0,2\pi)$.
 
-%\includegraphics{cn.jpg}
-
-Also, recall that for all $x \in [0, 2\pi]$, $x > \absval{\sin(x)}$. 
-So, $\absval{\frac{1}{x}} < \absval{\frac{1}{\sin(x)}}$ for all $x \in (0, \pi) \cap (\pi, 2\pi)$.
+This means that $\absval{D_n(x)} \geq \frac{1}{x}$ on those intervals, which naturally produces the inequality $\int\limits_0^{2\pi} \absval{D_n(x)} dx \geq \sum\limits_{j=1}^n \frac{2 \pi}{6n \frac{5\pi j}{6(n+1/2)}}$. 
 
 This means that 
 
 \begin{align*}
-c_n &\geq \frac{1}{2 \pi} \sum\limits_{j=1}^n \frac{2 \pi}{6n \sin(\frac{5\pi j}{6(n+1/2)})}\\
-&= \frac{1}{6} \sum\limits_{j=1}^n \frac{1}{n \sin(\frac{5\pi j}{6(n+1/2)})}\\
-&\geq \frac{1}{6} \sum\limits_{j=1}^n \frac{1}{6n \frac{5\pi j}{6(n+1/2)}}\\
-&= \frac{1}{6} \sum\limits_{j=1}^n \frac{(n+1/2)/{n}}{5\pi j}\\
-&\geq \frac{1}{6} \sum\limits_{j=1}^n \frac{1}{5\pi j}
+c_n &\geq \frac{1}{2 \pi} \sum\limits_{j=1}^n \frac{2 \pi}{6n \frac{5\pi j}{6(n+1/2)}}\\
+&= \sum\limits_{j=1}^n \frac{1}{6n \frac{5\pi j}{6(n+1/2)}}\\
+&= \sum\limits_{j=1}^n \frac{(n+1/2)/{n}}{5\pi j}\\
+&\geq \sum\limits_{j=1}^n \frac{1}{5\pi j}
 \end{align*}
 
-So $c_n \geq \frac{1}{30 \pi} \sum\limits_{j=1}^n \frac{1}{ j}$, and $\sum\limits_{j=1}^n \frac{1}{j} \to \infty$. 
+So $c_n \geq \frac{1}{5 \pi} \sum\limits_{j=1}^n \frac{1}{ j}$, and $\sum\limits_{j=1}^n \frac{1}{j} \to \infty$. 
 Thus, $c_n \to \infty$.
 
 \end{proof}
 
-\colorcomment{RoyalBlue}{It is important to determine how large the partial sum of a function's Fourier series can get at $0$. 
-So we make the following definition:}
+It is important to determine how large the partial sum of a function's Fourier series can get at $0$. 
+So we make the following definition:
 
 \begin{definition}
 If $f \in C(T)$, then $Mf = \sup\{\absval{S_n(f,0)} : n \in \N\}$ 
 \end{definition}
 
-\colorcomment{RoyalBlue}{Ultimately, we want to build a function with $Mf = \infty$.
+Ultimately, we want to build a function with $Mf = \infty$.
 One way to do this is to build a sequence of uniformly bounded functions, $f_n$, such that $Mf_n \to \infty$; 
 if we can do that, then we should be able to build the function we want.
-We build this sequence rather naturally out of the proof of the above theorem.}
+We build this sequence rather naturally out of the proof of the above theorem.
 
 \begin{thm}
 For each $A \in \R$, there is an $f \in C(T)$ such that $\norm{f} = 1$ and $Mf > A$. 
@@ -301,16 +298,13 @@ For each $A \in \R$, there is an $f \in C(T)$ such that $\norm{f} = 1$ and $Mf >
 \begin{proof}
 For each $n \in \N$, choose $g_n: T \to \R$ with $\norm{g_n} = 1$, $g_nD_n(t) \geq 0$ for all $t \in T$,  $g_n(t) = 1$ if $t \in [\frac{\pi k}{6(n+1/2)},\frac{5 \pi k}{6(n+1/2)}]$ for some odd $k \in \N$  and $g_n(t) = -1$ if $t \in [\frac{\pi k}{6(n+1/2)},\frac{5 \pi k}{6(n+1/2)}]$ for some even $k \in \N$.
 
-%\includegraphics{gn.jpg}
-
 So, similar to the above,
 
 \begin{align*}
-g_n \ast D_n(0) &\geq \frac{1}{2 \pi} \sum\limits_{j=1}^n \frac{2 \pi}{6n \sin(\frac{5\pi j}{6(n+1/2)})}\\
-&= \frac{1}{6} \sum\limits_{j=1}^n \frac{1}{n \sin(\frac{5\pi j}{6(n+1/2)})}\\
-&\geq \frac{1}{6} \sum\limits_{j=1}^n \frac{1}{6n \frac{5\pi j}{6(n+1/2)}}\\
-&= \frac{1}{6} \sum\limits_{j=1}^n \frac{(n+1/2)/{n}}{5\pi j}\\
-&\geq \frac{1}{6} \sum\limits_{j=1}^n \frac{1}{5\pi j}
+g_n \ast D_n(0) &\geq \frac{1}{2 \pi} \sum\limits_{j=1}^n \frac{2 \pi}{6n \frac{5\pi j}{6(n+1/2)}}\\
+&= \sum\limits_{j=1}^n \frac{1}{6n \frac{5\pi j}{6(n+1/2)}}\\
+&= \sum\limits_{j=1}^n \frac{(n+1/2)/{n}}{5\pi j}\\
+&\geq \sum\limits_{j=1}^n \frac{1}{5\pi j}
 \end{align*}
 
 So $g_n \ast D_n(0) \to \infty$. In other words, for each $A$ there is an $n \in \N$ such that $Mg_n > A$, which gives us what we wanted.
@@ -329,7 +323,7 @@ Observe that $\norm{\vep f} = \vep$ and $M(\vep f) > A$.
 
 \end{proof}
 
-\subsection{Building Open, Dense Sets of Continuous Functions With Some Partial Sum of its Fourier Series Larger Than A Given Real Number}
+\subsection{Building Open, Dense Sets of Continuous Functions With Some Partial Sum of its Fourier Series Larger Than A Given Real Number} \hspace*{\fill}\\
 
 Next, we consider the following collection of sets: for each $n \in \N$, we define
 
@@ -394,10 +388,8 @@ This means that for any $f,g \in C(T)$, $\absval{\la_n(f) - \la_n(g)} \leq c_n \
 \end{proof}
 
 \begin{thm}
-$C(T)$ is a complete metric space. %Fix the sentence-starts-with-word thing.
+The metric space $C(T)$ is complete.
 \end{thm}
-
-\colorcomment{Green}{I did a major rewrite of this. Please look over it, as well as the relevant definitions.}
 
 \begin{proof}
 We first show that the set of bounded functions, $B(T)$, is complete.
@@ -421,11 +413,11 @@ Next, recall that $C(T)$ is a closed subset of $B(T)$; because $C(T)$ is a close
 
 \end{proof}
 
-\subsection{Baire's Theorem}
+\subsection{Baire's Theorem} \hspace*{\fill}
 
-\colorcomment{RoyalBlue}{We now have a collection of open, dense sets in a complete metric space. 
+We now have a collection of open, dense sets in a complete metric space. 
 We want to show that their intersection is nonempty; a dramatic way of doing this is to show that the intersection is dense. 
-A flair for the dramatic is necessary in life and mathematics, so this is how we should proceed.}
+A flair for the dramatic is necessary in life and mathematics, so this is how we should proceed.
 
 In order to facilitate the proof of Baire's Theorem, we prove the following lemma:
 
@@ -451,7 +443,7 @@ so $\diam(C_n) \geq \vep$ for all $n \in \N$.
 So $\diam(C_n) \slashed{\to} 0$, contrary to our assumption.
 \end{proof}
 
-\begin{thm}If $X$ is a complete metric space, and $E_1, E_2, \ldots$ are dense, open subsets of $X$, then
+\begin{thm}[Baire's Theorem]If $X$ is a complete metric space, and $E_1, E_2, \ldots$ are dense, open subsets of $X$, then
 \begin{displaymath}
 \bigcap\limits_{n = 1}^{\infty} E_n
 \end{displaymath}
@@ -507,35 +499,33 @@ Dense subsets of $C(T)$ are nonempty, so there is a continuous function whose Fo
 
 \section{Closing Remarks}
 
-\colorcomment{RoyalBlue}{Recall Dini's Test:}
+Recall Dini's Test:
 
-\begin{thm}
+\begin{thm}[Dini's Test]
 If $f \in C(T)$, $x_0 \in T$, and $\int\limits_{-\de}^{\de} \absval{\frac{f(x+x_0) - f(x_0)}{x}} dx < \infty$ for some $\de >0$, then the Fourier series of $f$ converges at $x_0$.
 \end{thm}
 
-\colorcomment{RoyalBlue}{The condition required to apply Dini's test is ``just a little better than continuity''; if $f$ is continuous, then the term $f(x+x_0) - f(x_0)$ approaches $0$ as $x$ approaches $0$.}
+The condition required to apply Dini's test is ``just a little better than continuity''; if $f$ is continuous, then the term $f(x+x_0) - f(x_0)$ approaches $0$ as $x$ approaches $0$.
 
-\colorcomment{RoyalBlue}{Consider the function we have shown exists: it must fail the hypotheses of Dini's test, otherwise it would have its Fourier series converge. 
+Consider the function we have shown exists: it must fail the hypotheses of Dini's test, otherwise it would have its Fourier series converge. 
 So, this function cannot be differentiable at $0$. 
 Else, the function would be Lipschitz at $0$, and thus Dini's test would apply. 
-In fact, there is a much weaker condition that allows us to apply Dini's test.}
+In fact, there is a much weaker condition that allows us to apply Dini's test.
 
 \begin{definition}
-A function, $f: T \to \R$, is Lip$(\alpha)$ at $x_0$ if there is a $c \in \R$ such that for all $x \in T$, $\absval{f(x_o) - f(x)} < c\absval{x_0-x}$. 
+A function, $f: T \to \R$, is $\Lip_\al$ at $x_0$ if there is a $c \in \R$ such that for all $x \in T$, $\absval{f(x_0) - f(x)} < c\absval{x_0-x}^\al$. 
 \end{definition}
 
-\colorcomment{Green}{I'm not sure if I'm typesetting that in the standard way (or, honestly, if I'm saying that right). Is that fine, or should I do something like $Lip_\al$?}
+This is a very weak condition that is still stronger than continuity; it is right to think of this as being ``just a little better than continuity.''
+Indeed, a $Lip_\al$ function has $\absval{f(x_0) - f(x)}$ approach $0$ ``quickly enough'' that we can apply Dini's test.
+This is a way to think of Dini's test; a continuous function that has $\absval{f(x_0) - f(x)}$ approach $0$ ``quickly enough'' has its Fourier series converge at $x_0$. 
+Because being $Lip_\al$ is very weak, we should think of Dini's test as telling us that ``continuity is almost good enough.''
 
-\colorcomment{RoyalBlue}{This is a very weak condition that is still stronger than continuity; it is right to think of this as being ``just a little better than continuity.''
-Indeed, a Lip$(\alpha)$ function has $\absval{f(x_o) - f(x)}$ approach $0$ ``quickly enough'' that we can apply Dini's test.
-This is a way to think of Dini's test; a continuous function that has $\absval{f(x_o) - f(x)}$ approach $0$ ``quickly enough'' has its Fourier series converge at $x_0$. 
-Because being Lip$(\alpha)$ is very weak, we should think of Dini's test as telling us that ``continuity is almost good enough.''
-}
 
-\colorcomment{RoyalBlue}{Another interesting point to make is that the set of functions we constructed is dense. 
+Another interesting point to make is that the set of functions we constructed is dense. 
 This means that any function can be approximated by a function whose Fourier series diverges at $0$. 
 What we can take away from this is that such functions aren't particularly rare: in a sense, these functions are always ``just around the block,'' rather than ``hiding away in dark corners.''
 In other words, the result we had hoped for fails miserably. 
-However, that is fine; this provides for a richer, more interesting theory of Fourier Analysis.}
+However, that is fine; this provides for a richer, more interesting theory of Fourier Analysis.
 
 \end{document}

@@ -156,7 +156,7 @@
 
 \begin{document}
 
-\title{The Existence of a Continuous Function Whose Fourier Series Diverges at a Point}
+\title[A Continuous Function Whose Fourier Series Diverges at a Point]{The Existence of a Continuous Function Whose Fourier Series Diverges at a Point}
 \author{Raymond Maxwell Jeter}
 
 \begin{abstract}
@@ -168,11 +168,11 @@ In fact, the set of continuous functions whose Fourier series diverges at $0$ is
 
 \section{Introduction}
 
-In The Analytical Theory of Heat, Fourier claimed that any periodic function can be expressed as a Fourier Series, even if it was discontinuous. \colorcomment{red}{(cite it)}
-Indeed, many great mathematicians of the time, such as Cauchy, had produced flawed proofs of this. 
-After having proved a result that was ``really close'' to what was desired, Dirichlet seemed convinced of the truth of this. 
+In The Analytical Theory of Heat, Fourier claimed that any periodic function can be expressed as a Fourier Series, even if it was not continuous. 
+Indeed, many great mathematicians of the time, such as Cauchy, produced flawed proofs of this. 
+After having proved a result that was ``really close'' to what was desired, Dirichlet seemed convinced that any continuous function function had its Fourier series converge.  
 Over time, other great mathematicians, such as Dedekind, Riemann, and Weierstrass were also convinced. 
-However, Du Bois-Reymond constructed a counterexample! \colorcomment{red}{(cite Korner)}
+However, Du Bois-Reymond constructed a counterexample! ~\cite{Kor88}
 
 This paper is written as a nod to the rich history of this problem.
 
@@ -238,9 +238,8 @@ After that, we apply Baire's Theorem, which gives us a dense, open set of functi
 This dense, open set is nonempty; we have a continuous function whose Fourier series diverges at a point.
 
 Those who are familiar with the subject area will recognize that this is similar to a standard proof of the existence of a continuous function whose Fourier series diverges. 
-In fact, this proof is based on an observation by Dr. David C. Ullrich about a proof that involves functional analysis. 
-Dr. Ullrich saw that the parts of the proof involving functional analysis can be stripped away. 
-He then produced an outline of a proof that is much more accessible to a student who is just beginning to study Fourier analysis.
+In fact, this proof is based on an observation by Dr. David C. Ullrich about a proof that involves functional analysis; 
+Dr. Ullrich saw that the parts of the proof involving functional analysis can be stripped away such that the proof become much more accessible to a student who is just beginning to study Fourier analysis.
 
 \subsection{The Construction of Bounded, Continuous Functions With Some Partial Sum of Their Fourier Series Larger Than A Given Real Number}\hspace*{\fill}
 
@@ -258,23 +257,23 @@ The sequence $c_n \to \infty$.
 
 \begin{proof}
 
-First, $\absval{D_n(x)} \geq \frac{1/2}{\sin(x/2)}$ if $x \in [\frac{\pi k}{6(n+1/2)},\frac{5 \pi k}{6(n+1/2)}]$ for some $k \in \N$.
+First, $\absval{D_n(x)} \geq \frac{1/2}{\sin(x/2)}$ if $x \in [\frac{\pi +2\pi k}{6(n+1/2)},\frac{5 \pi+2\pi k}{6(n+1/2)}]$ for some $k \in \N$.
 
-Recall that for all $x \in [0, 2\pi]$, $x > \absval{\sin(x)}$. 
+Recall that for all $x \in (0, 2\pi)$, $x > \absval{\sin(x)}$. 
 So, $\absval{\frac{2}{x}} < \absval{\frac{1}{\sin(x/2)}}$ for all $x \in (0,2\pi)$.
 
-This means that $\absval{D_n(x)} \geq \frac{1}{x}$ on those intervals, which naturally produces the inequality $\int\limits_0^{2\pi} \absval{D_n(x)} dx \geq \sum\limits_{j=1}^n \frac{2 \pi}{6n \frac{5\pi j}{6(n+1/2)}}$. 
+This means that $\absval{D_n(x)} > \frac{1}{x}$ on those intervals, which naturally produces the inequality $\int\limits_0^{2\pi} \absval{D_n(x)} dx > \sum\limits_{k=1}^n \frac{2 \pi}{3n \frac{5\pi + 2\pi k}{6(n+1/2)}}$. 
 
 This means that 
 
 \begin{align*}
-c_n &\geq \frac{1}{2 \pi} \sum\limits_{j=1}^n \frac{2 \pi}{6n \frac{5\pi j}{6(n+1/2)}}\\
-&= \sum\limits_{j=1}^n \frac{1}{6n \frac{5\pi j}{6(n+1/2)}}\\
-&= \sum\limits_{j=1}^n \frac{(n+1/2)/{n}}{5\pi j}\\
-&\geq \sum\limits_{j=1}^n \frac{1}{5\pi j}
+c_n &> \frac{1}{2 \pi} \sum\limits_{k=1}^n \frac{2 \pi}{3n \frac{5 \pi+2\pi k}{6(n+1/2)}}\\
+&= \sum\limits_{k=1}^n \frac{1}{3n \frac{5 \pi+2\pi k}{6(n+1/2)}}\\
+&= \sum\limits_{k=1}^n \frac{2(n+1/2)/{n}}{5 \pi+2\pi k}\\
+&\geq \sum\limits_{k=1}^n \frac{2}{5 \pi+2\pi k}
 \end{align*}
 
-So $c_n \geq \frac{1}{5 \pi} \sum\limits_{j=1}^n \frac{1}{ j}$, and $\sum\limits_{j=1}^n \frac{1}{j} \to \infty$. 
+So $c_n > \sum\limits_{k=1}^n \frac{2}{5 \pi+2\pi k}$, and $\sum\limits_{k=1}^n \frac{2}{5 \pi+2\pi k} \to \infty$. 
 Thus, $c_n \to \infty$.
 
 \end{proof}
@@ -296,18 +295,18 @@ For each $A \in \R$, there is an $f \in C(T)$ such that $\norm{f} = 1$ and $Mf >
 \end{thm}
 
 \begin{proof}
-For each $n \in \N$, choose $g_n: T \to \R$ with $\norm{g_n} = 1$, $g_nD_n(t) \geq 0$ for all $t \in T$,  $g_n(t) = 1$ if $t \in [\frac{\pi k}{6(n+1/2)},\frac{5 \pi k}{6(n+1/2)}]$ for some odd $k \in \N$  and $g_n(t) = -1$ if $t \in [\frac{\pi k}{6(n+1/2)},\frac{5 \pi k}{6(n+1/2)}]$ for some even $k \in \N$.
+For each $n \in \N$, choose $g_n \in C(T)$ with $\norm{g_n} = 1$, $g_nD_n(t) \geq 0$ for all $t \in T$,  $g_n(t) = 1$ if $t \in [\frac{\pi +2\pi k}{6(n+1/2)},\frac{5 \pi+2\pi k}{6(n+1/2)}]$ for some odd $k \in \N$  and $g_n(t) = -1$ if $t \in [\frac{\pi +2\pi k}{6(n+1/2)},\frac{5 \pi+2\pi k}{6(n+1/2)}]$ for some even $k \in \N$.
 
 So, similar to the above,
 
 \begin{align*}
-g_n \ast D_n(0) &\geq \frac{1}{2 \pi} \sum\limits_{j=1}^n \frac{2 \pi}{6n \frac{5\pi j}{6(n+1/2)}}\\
-&= \sum\limits_{j=1}^n \frac{1}{6n \frac{5\pi j}{6(n+1/2)}}\\
-&= \sum\limits_{j=1}^n \frac{(n+1/2)/{n}}{5\pi j}\\
-&\geq \sum\limits_{j=1}^n \frac{1}{5\pi j}
+g_n \ast D_n(0) &\geq \frac{1}{2 \pi} \sum\limits_{k=1}^n \frac{2 \pi}{3n \frac{5 \pi+2\pi k}{6(n+1/2)}}\\
+&= \sum\limits_{k=1}^n \frac{1}{3n \frac{5 \pi+2\pi k}{6(n+1/2)}}\\
+&= \sum\limits_{k=1}^n \frac{2(n+1/2)/{n}}{5 \pi+2\pi k}\\
+&\geq \sum\limits_{k=1}^n \frac{2}{5 \pi+2\pi k}
 \end{align*}
 
-So $g_n \ast D_n(0) \to \infty$. In other words, for each $A$ there is an $n \in \N$ such that $Mg_n > A$, which gives us what we wanted.
+So $g_n \ast D_n(0) \to \infty$. In other words, for each $A \in \R$ there is an $n \in \N$ such that $Mg_n > A$, which gives us what we wanted.
 
 \end{proof}
 
@@ -354,27 +353,22 @@ For each $n \in \N$, $E_n$ is open.
 
 \begin{proof}
 Consider $\la_n: C(T) \to \R$ given by
-
 \begin{displaymath}
-\la_n(f) = \absval{S_n(f,0)}
+\la_n(f) = S_n(f,0)
 \end{displaymath}
-
 Now, consider the following:
-
 \begin{align*}
 E_n &= \{f \in C(T): Mf> n\} \\
-&= \bigcup\limits_{N \in \N} \{f \in C(T) : \la_N (f)> n\}\\
-&= \bigcup\limits_{N \in \N} \la_N^{-1}((n, \infty))
+&= \bigcup\limits_{N \in \N} \{f \in C(T) : \la_N (f)> n \textrm{ or } \la_N(f) < -n\}\\
+&= \bigcup\limits_{N \in \N} \la_N^{-1}((\infty, -n) \cup (n, \infty))
 \end{align*}
-
 It is sufficient to show that $\la_n$ is continuous for all $n \in \N$; if so, then the right hand side of the above equation is open.
 We do this by showing that $\la_n$ is Lipschitz.
 
 If $f, g \in C(T)$, then we have:
 
 \begin{align*}
-\absval{\la_n(f) - \la_n(g)} &= \absval{\absval{f \ast D_n(0)} - \absval{g \ast D_n(0)}} \\
-&\leq \absval{f \ast D_n(0) - g \ast D_n(0)} \\
+\absval{\la_n(f) - \la_n(g)} &= \absval{f \ast D_n(0) - g \ast D_n(0)} \\
 &= \absval{(f-g) \ast D_n(0)} \\
 &= \absval{\int\limits_0^{2\pi} (f(t)-g(t))D_n(t)dt} \\
 &\leq \int\limits_0^{2\pi} \absval{(f(t)-g(t))D_n(t)}dt \\
@@ -407,7 +401,7 @@ Now: let $\vep >0$. Choose $N$ such that for all $n,m \geq N$, $\norm{f_n-f_m} <
 Then for all $x \in T$ and $n,m \geq N$, we have $\absval{f_n(x) - f_m(x)} < \frac{\vep}{2}$.
 By taking a limit as $m \to \infty$, we have for all $x \in T$ and $n \geq N$, $\absval{f_n(x) - f(x)} \leq \frac{\vep}{2}$.
 
-So $\norm{f_n - f} \leq \frac{\vep}{2} < \vep$ for all $n \geq N$; in other words, $f_n \to f$.
+So $\norm{f_n - f} \leq \frac{\vep}{2} < \vep$ for all $n \geq N$; this means that $f_n \to f$.
 
 Next, recall that $C(T)$ is a closed subset of $B(T)$; because $C(T)$ is a closed subset of a complete metric space, it is complete.
 
@@ -517,9 +511,9 @@ A function, $f: T \to \R$, is $\Lip_\al$ at $x_0$ if there is a $c \in \R$ such 
 \end{definition}
 
 This is a very weak condition that is still stronger than continuity; it is right to think of this as being ``just a little better than continuity.''
-Indeed, a $Lip_\al$ function has $\absval{f(x_0) - f(x)}$ approach $0$ ``quickly enough'' that we can apply Dini's test.
+Indeed, a $\Lip_\al$ function has $\absval{f(x_0) - f(x)}$ approach $0$ ``quickly enough'' that we can apply Dini's test.
 This is a way to think of Dini's test; a continuous function that has $\absval{f(x_0) - f(x)}$ approach $0$ ``quickly enough'' has its Fourier series converge at $x_0$. 
-Because being $Lip_\al$ is very weak, we should think of Dini's test as telling us that ``continuity is almost good enough.''
+Because being $\Lip_\al$ is very weak, we should think of Dini's test as telling us that ``continuity is almost good enough.''
 
 
 Another interesting point to make is that the set of functions we constructed is dense. 
@@ -527,5 +521,8 @@ This means that any function can be approximated by a function whose Fourier ser
 What we can take away from this is that such functions aren't particularly rare: in a sense, these functions are always ``just around the block,'' rather than ``hiding away in dark corners.''
 In other words, the result we had hoped for fails miserably. 
 However, that is fine; this provides for a richer, more interesting theory of Fourier Analysis.
+
+\bibliographystyle{amsplain}
+\bibliography{Thesis}
 
 \end{document}

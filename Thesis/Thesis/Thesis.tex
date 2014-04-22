@@ -257,23 +257,22 @@ The sequence $c_n \to \infty$.
 
 \begin{proof}
 
-First, $\absval{D_n(x)} \geq \frac{1/2}{\sin(x/2)}$ if $x \in [\frac{\pi +2\pi k}{6(n+1/2)},\frac{5 \pi+2\pi k}{6(n+1/2)}]$ for some $k \in \N$.
+First, $\absval{D_n(x)} \geq \frac{1/2}{\sin(x/2)}$ if $x \in [\frac{\pi +6\pi k}{6(n+1/2)},\frac{5 \pi+6\pi k}{6(n+1/2)}]$ for some $k \in \N$.
 
 Recall that for all $x \in (0, 2\pi)$, $x > \absval{\sin(x)}$. 
 So, $\absval{\frac{2}{x}} < \absval{\frac{1}{\sin(x/2)}}$ for all $x \in (0,2\pi)$.
 
-This means that $\absval{D_n(x)} > \frac{1}{x}$ on those intervals, which naturally produces the inequality $\int\limits_0^{2\pi} \absval{D_n(x)} dx > \sum\limits_{k=1}^n \frac{2 \pi}{3n \frac{5\pi + 2\pi k}{6(n+1/2)}}$. 
+This means that $\absval{D_n(x)} > \frac{1}{x}$ on those intervals, which naturally produces the inequality $\int\limits_0^{2\pi} \absval{D_n(x)} dx > \sum\limits_{k=1}^n \frac{4 \pi}{6(n+1/2)}\frac{1}{ \frac{5\pi + 6\pi k}{6(n+1/2)}}$. 
 
 This means that 
 
 \begin{align*}
-c_n &> \frac{1}{2 \pi} \sum\limits_{k=1}^n \frac{2 \pi}{3n \frac{5 \pi+2\pi k}{6(n+1/2)}}\\
-&= \sum\limits_{k=1}^n \frac{1}{3n \frac{5 \pi+2\pi k}{6(n+1/2)}}\\
-&= \sum\limits_{k=1}^n \frac{2(n+1/2)/{n}}{5 \pi+2\pi k}\\
-&\geq \sum\limits_{k=1}^n \frac{2}{5 \pi+2\pi k}
+c_n &> \frac{1}{2 \pi} \sum\limits_{k=1}^n \frac{2 \pi}{3(n+1/2) \frac{5 \pi+6\pi k}{6(n+1/2)}}\\
+&= \sum\limits_{k=1}^n \frac{1}{3(n+1/2) \frac{5 \pi+6\pi k}{6(n+1/2)}}\\
+&= \sum\limits_{k=1}^n \frac{2}{5 \pi+6\pi k}
 \end{align*}
 
-So $c_n > \sum\limits_{k=1}^n \frac{2}{5 \pi+2\pi k}$, and $\sum\limits_{k=1}^n \frac{2}{5 \pi+2\pi k} \to \infty$. 
+So $c_n > \sum\limits_{k=1}^n \frac{2}{5 \pi+6\pi k}$, and $\sum\limits_{k=1}^n \frac{2}{5 \pi+6\pi k} \to \infty$. 
 Thus, $c_n \to \infty$.
 
 \end{proof}
@@ -295,15 +294,14 @@ For each $A \in \R$, there is an $f \in C(T)$ such that $\norm{f} = 1$ and $Mf >
 \end{thm}
 
 \begin{proof}
-For each $n \in \N$, choose $g_n \in C(T)$ with $\norm{g_n} = 1$, $g_nD_n(t) \geq 0$ for all $t \in T$,  $g_n(t) = 1$ if $t \in [\frac{\pi +2\pi k}{6(n+1/2)},\frac{5 \pi+2\pi k}{6(n+1/2)}]$ for some odd $k \in \N$  and $g_n(t) = -1$ if $t \in [\frac{\pi +2\pi k}{6(n+1/2)},\frac{5 \pi+2\pi k}{6(n+1/2)}]$ for some even $k \in \N$.
+For each $n \in \N$, choose $g_n \in C(T)$ with $\norm{g_n} = 1$, $g_nD_n(t) \geq 0$ for all $t \in T$,  $g_n(t) = 1$ if $t \in [\frac{\pi +6\pi k}{6(n+1/2)},\frac{5 \pi+6\pi k}{6(n+1/2)}]$ for some odd $k \in \N$  and $g_n(t) = -1$ if $t \in [\frac{\pi +6\pi k}{6(n+1/2)},\frac{5 \pi+6\pi k}{6(n+1/2)}]$ for some even $k \in \N$.
 
 So, similar to the above,
 
 \begin{align*}
-g_n \ast D_n(0) &\geq \frac{1}{2 \pi} \sum\limits_{k=1}^n \frac{2 \pi}{3n \frac{5 \pi+2\pi k}{6(n+1/2)}}\\
-&= \sum\limits_{k=1}^n \frac{1}{3n \frac{5 \pi+2\pi k}{6(n+1/2)}}\\
-&= \sum\limits_{k=1}^n \frac{2(n+1/2)/{n}}{5 \pi+2\pi k}\\
-&\geq \sum\limits_{k=1}^n \frac{2}{5 \pi+2\pi k}
+g_n \ast D_n(0) &\geq \frac{1}{2 \pi} \sum\limits_{k=1}^n \frac{2 \pi}{3(n+1/2) \frac{5 \pi+6\pi k}{6(n+1/2)}}\\
+&= \sum\limits_{k=1}^n \frac{1}{3(n+1/2) \frac{5 \pi+6\pi k}{6(n+1/2)}}\\
+&= \sum\limits_{k=1}^n \frac{2}{5 \pi+6\pi k}
 \end{align*}
 
 So $g_n \ast D_n(0) \to \infty$. In other words, for each $A \in \R$ there is an $n \in \N$ such that $Mg_n > A$, which gives us what we wanted.

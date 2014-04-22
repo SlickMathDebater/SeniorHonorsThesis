@@ -4,14 +4,6 @@
 %Doing numbering like this from now on:
 %0.abc: a: math draft #. b: exposition draft # c: formatting draft number.
 
-%Current status:
-%Barebones: ALL CLEAR. 
-
-%Exposition:
-%Introduction: Not researched.
-%Proof Outline: Planned. Not researched.
-%Outro: Researched. Written. Not approved.
-
 %Formatting:
 %Will figure out later.
 
@@ -170,7 +162,7 @@ In fact, the set of continuous functions whose Fourier series diverges at $0$ is
 
 In The Analytical Theory of Heat, Fourier claimed that any periodic function can be expressed as a Fourier Series, even if it was not continuous. 
 Indeed, many great mathematicians of the time, such as Cauchy, produced flawed proofs of this. 
-After having proved a result that was ``really close'' to what was desired, Dirichlet seemed convinced that any continuous function function had its Fourier series converge.  
+After having proved a result that was ``really close'' to what was desired, Dirichlet seemed convinced that any continuous function had its Fourier series converge.  
 Over time, other great mathematicians, such as Dedekind, Riemann, and Weierstrass were also convinced. 
 However, Du Bois-Reymond constructed a counterexample! ~\cite{Kor88}
 
@@ -205,6 +197,14 @@ For each $n \in \N$, we define $D_n: T \to \R$ by
    D_n(x) = \sum\limits_{j=-n}^n e^{ijx}
 \end{displaymath} 
 \end{definition}
+
+%Note that $D_n$ is indeed a function from $T$ to $\R$, because
+
+%\begin{displaymath}
+ %  D_n(x) =1+2 \sum\limits_{j=1}^n \cos(jx)
+%\end{displaymath}
+
+%by Euler's Formula.
 
 Also, we freely use the following well-known theorems:
 
@@ -352,15 +352,15 @@ For each $n \in \N$, $E_n$ is open.
 \end{thm}
 
 \begin{proof}
-Consider $\la_n: C(T) \to \R$ given by
+Consider $\la_n: C(T) \to \C$ given by
 \begin{displaymath}
 \la_n(f) = S_n(f,0)
 \end{displaymath}
 Now, consider the following:
 \begin{align*}
 E_n &= \{f \in C(T): Mf> n\} \\
-&= \bigcup\limits_{N \in \N} \{f \in C(T) : \la_N (f)> n \textrm{ or } \la_N(f) < -n\}\\
-&= \bigcup\limits_{N \in \N} \la_N^{-1}((\infty, -n) \cup (n, \infty))
+&= \bigcup\limits_{N \in \N} \{f \in C(T) : \absval{\la_N(f)} > n\}\\
+&= \bigcup\limits_{N \in \N} \la_N^{-1}(\C \setminus \overline{B(0,n)})
 \end{align*}
 It is sufficient to show that $\la_n$ is continuous for all $n \in \N$; if so, then the right hand side of the above equation is open.
 We do this by showing that $\la_n$ is Lipschitz.
@@ -389,7 +389,7 @@ The metric space $C(T)$ is complete.
 We first show that the set of bounded functions, $B(T)$, is complete.
 So, we want to show that any Cauchy sequence of bounded functions, $(f_n)$, converges to a bounded function.
 
-Note that $\R$ is complete: so for each $x \in T$, $(f_n(x))$ converges to a point. We define $f: T \to \R$ by $f(x) = \lim\limits_{n \to \infty} f_n(x)$.
+Note that $\C$ is complete: so for each $x \in T$, $(f_n(x))$ converges to a point. We define $f: T \to \C$ by $f(x) = \lim\limits_{n \to \infty} f_n(x)$.
 
 Now, $f$ is bounded: 
 There is an $N$ such that for all $n,m \geq N$, $\norm{f_n-f_m} < 1$.
@@ -507,7 +507,7 @@ Else, the function would be Lipschitz at $0$, and thus Dini's test would apply.
 In fact, there is a much weaker condition that allows us to apply Dini's test.
 
 \begin{definition}
-A function, $f: T \to \R$, is $\Lip_\al$ at $x_0$ if there is a $c \in \R$ such that for all $x \in T$, $\absval{f(x_0) - f(x)} < c\absval{x_0-x}^\al$. 
+A function, $f: T \to \C$, is $\Lip_\al$ at $x_0$ if there is a $c \in \R$ such that for all $x \in T$, $\absval{f(x_0) - f(x)} \leq c\absval{x_0-x}^\al$. 
 \end{definition}
 
 This is a very weak condition that is still stronger than continuity; it is right to think of this as being ``just a little better than continuity.''
